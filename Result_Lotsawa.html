@@ -75,84 +75,14 @@
 		
 		</style>
 		<script src="/js_osbl/_js.js"></script>
-		<script type="text/javascript">		
-			var searchText=''
-			var oldSelect=''
-			var startSelect=''
-			var endSelect=''
-				function readText(){
-						return document.getElementById("text").innerHTML
-				}
-			   function readStr(){
-						return searchText
-				}
-			   function edit(id){
-					str=document.getElementById(id).innerHTML
-					str=str.replace(/=/g,"/")
-				  document.getElementById(id).innerHTML=str
-				  document.getElementById(id).contentEditable = "true";
-				  startSelect=''
-				  
-				  if(endSelect!=''){   		    
-								  document.getElementById('s'+endSelect).contentEditable = "false"
-						 endSelect=''
-					}        	  
-					
-					document.getElementById(id).style.color="white" 
-				}
-				function set(id){
-					searchText=document.getElementById(id).innerHTML
-					str="<font color='#007AFF'>"+searchText+"</font>"
-					document.getElementById(id).innerHTML=str
-					if(startSelect==''){
-						startSelect=parseInt(id.replace(/s/g,''))
-					}else{
-						endSelect=parseInt(id.replace(/s/g,''))
-						if(endSelect!=startSelect){
-							str=document.getElementById('s'+startSelect).innerHTML
-							str+=document.getElementById('s'+endSelect).innerHTML
-							str=str.replace(/<[^>]*>/g,'')
-							str=str.replace(/་-/g,'')
-							str0=document.getElementById('s'+
-								(startSelect+1)).innerHTML
-							str1=document.getElementById('s'+
-								(endSelect+1)).innerHTML
-							str0 =str0 + " " + str1
-							str0="/"+str0.replace(/[@\/=]/g,'')
-							document.getElementById('s'+
-								(startSelect+1)).innerHTML=str0
-							document.getElementById('s'+startSelect).innerHTML=str
-						}
-						document.getElementById('s'+startSelect).contentEditable 
-							= "true"
-					}	
-				}
-				
-				function link(){
-					document.getElementById("text").contentEditable = "false"
-				}
-				function v(id){
-				   str=document.getElementById(id).innerHTML
-					 str=str.replace(/<[^>]*>/g,"")
-					 document.getElementById(id).innerHTML=str
-					 //idText=id.replace(/s/,"")
-				    //idNum=idText-1
-					 //idText="s"+idNum
-					 //str0=document.getElementById(idText).innerHTML
-					 //text=document.getElementById("text").innerHTML
-					 //rep=RegExp('(<[^>]*>)'+str0+'(<[^\]]*>=|/)([^\]]*\])','g')
-					 //rep=RegExp('(<[^>]*>)'+str0+'(<[^\\]]*>)[=/][^\\]]*\\]','g')
-					 //text=text.replace(rep,'$1'+str0+'$2'+str+'</t>]')
-					 //document.getElementById("text").innerHTML=text
-				}
-		</script>
-<script id="Формат тиб текста">
+		<script type="text/javascript"></script>
+		<script id="Формат тиб текста">
 			function FN_Tb_Str() {
 				var Tib_Strn=document.Input_Tb_Str.Tib_Strn.value;
-				//var Tib_Strn=document.getElementById(Tib_Strn1).value;
+				var html=Tib_Strn
 				
 				// заголовок и подзаголовки
-				var html=Tib_Strn.replace(/([༄༅།\s]+\S+?ལས[།༔])\s+(\S+?་བཞུགས\S*[།༔]*)/gm, '<h1 class="Toc">$1 $2</h1> <br>\n');
+				var html=html.replace(/([༄༅།\s]+\S+?ལས[།༔])\s+(\S+?་བཞུགས\S*[།༔]*)/gm, '<h1 class="Toc">$1 $2</h1> <br>\n');
 				html=html.replace(/(\S+?ནི[།༔])/gm, '<br><br><h4 class="Topic">$1</h4>\n');
 				html=html.replace(/(༈)/gm, '<br><br>$1');
 				// цитаты и продолжение цитаты
@@ -168,13 +98,7 @@
 				//отправка результата
 				document.getElementById('Result').innerHTML = html;
 			}
-			console.log("HELLLOOOOO!!");
 			document.getElementById('Send').addEventListener('click', FN_Tb_Str);
-			
-			//<form onsubmit="alert('submit!');return false">
-			// <input type="text" size="30" value="tib_text">
-			// <input type="submit" value="Send" onclick="Complete();">
-			//</form>
 		</script>
 		<title>Lotsawa</title>
 	</head>
@@ -183,7 +107,7 @@
 	
   <div class="Tib_Txt">
 		<h7 id="_@">Lotsawa result:</h7>
-		<section lang="bo">
+		<section lang="bo" id="Result">
 <h1 class="Toc">༄༅། །<dfn class="na" title="['be born; be produced; be engendered']"><a id="1_" href="#_1">སྐྱེས</a></dfn>་བུ་<dfn class="na" title="['big (size), great']"><a id="2_" href="#_2">ཆེན</a></dfn>་པོའི་<dfn class="na" title="['..или.', '.?', '.,', 'path; way; road; [connective particle:] and; or']"><a id="3_" href="#_3">ལམ</a></dfn>་<dfn class="cc" title="['cc', 'владение/принадлежность', 'соответствующее основе качество', 'место объекта', 'часть из/среди целого']"><a id="4_" href="#_4">གྱི</a></dfn>་རིམ་པ་<dfn class="na" title="['после', 'затем', 'деепричастие …ев/ув', 'среди различных', 'сравнит чем', 'action; deed; work; having (done something)']"><a id="5_" href="#_5">ལས</a></dfn>། <dfn class="na" title="['vehicle']"><a id="6_" href="#_6">ཐེག</a></dfn>་<dfn class="na" title="['big (size), great']"><a id="2_" href="#_2">ཆེན</a></dfn>་<dfn class="cc" title="['cc', 'владение/принадлежность', 'соответствующее основе качество', 'место объекта', 'часть из/среди целого']"><a id="4_" href="#_4">གྱི</a></dfn>་<dfn class="na" title="['enter; engage; apply; usher (into); engages']"><a id="7_" href="#_7">འཇུག</a></dfn>་སྒོ་སེམས་<dfn class="na" title="['generate; produce; engender']"><a id="8_" href="#_8">བསྐྱེད</a></dfn>་<dfn class="na" title="['так называется']"><a id="9_" href="#_9">བཞུགས་སོ</a></dfn>༔</h1> <br><br>
 
  <dfn class="na" title="['wish; admire; pray; aspire']"><a id="10_" href="#_10">སྨོན</a></dfn>་སེམས་<dfn class="na" title="['to learn (present nh.), purify; wash; practice; train; clean;']"><a id="11_" href="#_11">སྦྱང</a></dfn>་བ་<dfn class="cc" title="['cc', 'собирание и разделение', 'по причине', '..непосредственно после', 'наставление/указание']"><a id="12_" href="#_12">དང</a></dfn>་<dfn class="na" title="['conquest; victory']"><a id="13_" href="#_13">རྒྱལ</a></dfn>་སྲས་<dfn class="cc" title="['cc', 'владение/принадлежность', 'соответствующее основе качество', 'место объекта', 'часть из/среди целого']"><a id="14_" href="#_14">ཀྱི</a></dfn>་<dfn class="na" title="['enjoy; make use of; practice; act out; perform; behavior; deeds; performance']"><a id="15_" href="#_15">སྤྱོད</a></dfn>་པ་སྤྱི་<dfn class="cc" title="['cc', ['по направлению/месту', 'отсутствие заявленной цели', 'adj+ly'], ['Предоставление чего-либо', 'кому-либо', 'для', 'что-бы'], ['взаиморасположение и местопребывание', 'без движения', 'относительно', 'касательно', 'в обстоятельствах', 'место', 'время', 'среди..', 'заголовки', 'идти']]"><a id="16_" href="#_16">ལ</a></dfn>་<dfn class="na" title="['to learn; teach; train in (present, past nh.)']"><a id="17_" href="#_17">བསླབ</a></dfn>་པའི་ཚུལ། །<dfn class="na" title="['vehicle']"><a id="6_" href="#_6">ཐེག</a></dfn>་<dfn class="na" title="['big (size), great']"><a id="2_" href="#_2">ཆེན</a></dfn>་<dfn class="cc" title="['cc', 'владение/принадлежность', 'соответствующее основе качество', 'место объекта', 'часть из/среди целого']"><a id="4_" href="#_4">གྱི</a></dfn>་<dfn class="na" title="['enter; engage; apply; usher (into); engages']"><a id="7_" href="#_7">འཇུག</a></dfn>་སྒོ་སེམས་<dfn class="na" title="['generate; produce; engender']"><a id="8_" href="#_8">བསྐྱེད</a></dfn>་ཁོ་ནར་<dfn class="na" title="['to show (past/present/future honorific)']"><a id="18_" href="#_18">བསྟན</a></dfn>་པ། །བྱང་ཆུབ་སེམས་<dfn class="na" title="['to learn (present nh.), purify; wash; practice; train; clean;']"><a id="11_" href="#_11">སྦྱང</a></dfn>་བ་རིམ་པ་<dfn class="cc" title="['cc', ['по направлению/месту', 'отсутствие заявленной цели', 'adj+ly'], ['Предоставление чего-либо', 'кому-либо', 'для', 'что-бы'], ['взаиморасположение и местопребывание', 'без движения', 'относительно', 'касательно', 'в обстоятельствах', 'место', 'время', 'среди..', 'заголовки', 'идти']]"><a id="16_" href="#_16">ལ</a></dfn>་ཇོ་བོ་<dfn class="na" title="['после', 'затем', 'деепричастие …ев/ув', 'среди подобных', 'от .. и до..']"><a id="19_" href="#_19">ནས</a></dfn>་བརྒྱུད་པ་རྒྱུ་འབྲས་མན་ངག་<dfn class="na" title="['seven']"><a id="20_" href="#_20">བདུན</a></dfn>། 

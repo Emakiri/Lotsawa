@@ -1,0 +1,366 @@
+body {background: rgb(220, 220, 220); }
+			
+p{
+    margin: 0em 0px 0em 0px; /*верх, право, низ, лево*/}
+
+a{text-decoration:none;}
+
+a:hover{color:brown;}
+dfn{
+    padding: 0px 1px 10px 1px; /*верх, право, низ, лево*/
+    color: navy;
+    /*border: 0.5px solid brown;
+    border-radius: 3px;*/
+    font-style: normal;
+    line-height: 1.25;}
+
+.definition{/cursor: help; //border-bottom: 1px dashed; //text-decoration: none;
+    //display: inline; position: relative;
+    }
+
+.definition:hover:after{ //text
+    background: #fff;
+    background: rgba(255, 255, 204,0.9);
+    border-radius: 5px;
+    border: 0.5px solid brown;
+    bottom: -50px;
+    color: navy;
+    font-size: 14px;
+    content: attr(def);
+    //left: 20%;
+    //padding: 5px 5px;
+    position: absolute;
+    z-index: 98;
+    width: 220px;
+}
+.definition:hover:before{
+    //border: 0.5px solid brown;
+    //border-radius: 5px;
+    //border-color: #333 transparent;
+    //border-width: 6px 6px 0 6px;
+    //bottom: 20px;
+    content: "";
+    left: 50%;
+    position: absolute;
+    z-index: 99;
+}	
+.definition span {display: none}	
+
+.definition:hover span {
+    border: #c0c0c0 1px dotted;
+    padding: 5px 5px 5px 5px;
+    display: block;
+    z-index: 100;
+    background: #f0f0f0;
+    //left: 0px;
+    //margin: 10px;
+    //width: 250px;
+    //position: absolute;
+    //top: 10px;
+    //text-decoration: none
+    //color: navy;
+    //border: 0.5px solid brown;
+    //border-radius: 5px;}
+
+.cc, a[prtSp="cc"], partcl[prtSp="cc"], span[prtSp="cc"]  {border-radius: 3px; border: 0.5px solid brown; background: #cc88ee; padding: 1px 1px 10px 1px;} 
+<!--cc союз/частица -->		
+
+//select::-ms-expand {display: none; /* remove default arrow in IE 10 and 11 */ }
+
+section, Fulltext{position: relative;	}
+
+.Tib_Txt {
+    position: fixed;
+    overflow: auto;
+    left:0;top:0;width:75%; height:100%;}
+.Right_Dict {position:fixed;right:0;top:1%;width:25%;height:100%;overflow:auto;}
+/*.Down_Sent{    background: beige;position:fixed;right:0;top:60%;width:100%;height:40%;overflow:auto;}
+*/
+.transl {position: absolute;  left: 0;  bottom: 0;  width: 100%;  max-height: 40%;  background:gray; overflow:auto;}
+
+h1, h3, h4, h5, h6 {
+    margin: 1% 0.1% 0.3% 0.7%; /*верх, право, низ, лево*/
+    padding: 0.3% 0.7% 0.3% 0.7%; /*верх, право, низ, лево*/
+    width: fit-content;
+    font-weight: 600;
+    line-height: 1.2;
+    clear: both;
+    text-shadow: 1px -1px #6e6e6e;
+    text-transform: capitalize;		
+    text-shadow: 1px -1px #6e6e6e, 
+     2px -2px 4px rgba(0,0,0,.5);
+}
+
+.sent{
+    font-size: 20px;
+    padding: 0px, 0px, 0px, 0px;
+    line-height: 40px;
+}
+
+.cite_src {
+    color: green;
+    font-weight: 600;
+    //background: #f5f5f5;
+    //width: fit-content;}
+    
+.cite, code {  
+    background: #f5f5f5;
+    display: inline-block;
+    box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5),
+                1px 1px 5px rgba(255, 255, 255, 1);
+    margin: 2px 2px 5px 5px; /*верх, право, низ, лево*/
+    border-left: 1px solid brown;
+    border-radius: 3px;
+    padding: 5px 2px 5px 5px; /*верх, право, низ, лево*/
+    font-weight: 600;
+    }
+
+:lang(bo){font-size: 23px;}
+:lang(sk){} <!--санскрит-->
+.nn{background: #FFFFCC;} <!--nn сущ желт-->
+.prn{background: #FFFFCC;} <!--pn местоим желт-->
+.adj{background: #FFCCCC;}	<!--aj прил зел-->
+.vrb{background: #FFCCCC;} <!--vb глаг крас-->
+.aux{background: #AAFFDD;} <!--ax вспом.глаг оранж-->
+.adv{background: #BBFFAA;} <!--av нареч бирюз -->
+
+.adp{background: #FFCCCC;} <!--ap позиционирование синий-->
+.itr{background: #FFCCCC;} <!--qs вопрос фиолет-->
+    
+.notes{
+    position: absolute; right: 7px; width: 30%; 
+    margin: 0px 2px 5px 0px; /*верх, право, низ, лево*/}
+            
+#Result {
+    /*border: 5px solid brown;*/
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 97%;
+    height: 100%;
+    margin: 2px 4px 0px 15px;
+}
+
+.fon_okna:target,  .fon_okna.open{
+    display: block;
+    opacity: 1; /* делаем окно видимым */
+    pointer-events: auto; /* элемент видим для событий мыши */
+    overflow-y: auto; /* добавляем прокрутку по y, когда элемент не помещается на страницу */
+    }
+
+.fon_okna {
+    /*border: 5px solid yellow;*/
+    display: none; 
+    width: 75%;
+    height: 98%;
+    position: absolute; /* фиксированное положение */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.2); /* цвет фона */
+    z-index: 1050;
+    opacity: 0; /* по умолчанию модальное окно прозрачно */
+    -webkit-transition: opacity 200ms ease-in; 
+    -moz-transition: opacity 200ms ease-in;
+    transition: opacity 200ms ease-in; /* анимация перехода */
+    pointer-events: none; /* элемент невидим для событий мыши */
+    margin: 0;
+    padding: 0;
+}
+
+.okno {
+width: 230px;
+height: fit-content;
+padding: 3px 5px 5px 5px;
+/*position: absolute;
+color: navy;*/
+top: 0%;
+left: 0%;
+z-index: 1000; 
+position: relative;
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-orient: vertical;
+-webkit-box-direction: normal;
+-webkit-flex-direction: column;
+-ms-flex-direction: column;
+flex-direction: column;
+background: rgba(255, 255, 240, .97);
+-webkit-background-clip: padding-box;
+background-clip: padding-box;
+border: 1px solid rgba(108, 0, 0, 0.87);
+border-radius: 4px;
+}
+.okno_sent {
+     width: 910px; 
+    height: fit-content;
+    margin: 15px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+    top: 5%;
+    /* left: 0%; */
+    /* z-index: 1000; */
+    /* position: relative; */
+    /* display: -webkit-box; */
+    /* display: -webkit-flex; */
+    display: -ms-flexbox;
+    /* display: flex; */
+    /* -webkit-box-orient: vertical; */
+    /* -webkit-box-direction: normal; */
+    /* -webkit-flex-direction: row; */
+    -ms-flex-direction: row;
+    /* flex-direction: row; */
+    background: rgba(255, 255, 240, .97);
+    /* -webkit-background-clip: padding-box; */
+    /* background-clip: padding-box; */
+    border: 1px solid rgba(108, 0, 0, 0.87);
+    border-radius: 4px;
+}
+
+.wndw_sent_cont{display:flex;flex-direction:row;align-items:center;position:relative;
+  background-color:beige;cursor:pointer;transition:all .2s ease;padding:12px 16px;
+  min-height:50px;box-sizing:border-box}
+
+  .input_sent{    
+      box-sizing:border-box;width: 97%;
+    padding:10px 18px;
+    /*border:2px solid rgba(var(--charcoal-grey-raw),.16);
+    display:block;*/
+    border-radius:4px;
+    font-size:14px;font-weight:600;line-height:1.43;color:var(--charcoal-grey-raw);
+    outline:none;transition:color .2s ease-in,border-color .2s ease-in;resize:vertical}
+
+
+select { 
+    appearance: none;
+    /* outline: 0; */
+    /* background: #fbfbfb; */
+    /* background-image: none; */
+    font-size: 14px;
+    width: 100px;
+    position: relative;
+    right:0;
+    /* height: 100%; */
+    color: black;
+    cursor: pointer;
+    border: 1px solid gray;
+    border-radius: 5px;
+    //-webkit-appearance: none;
+    //-moz-appearance: none;
+    //overflow: hidden;
+} 
+
+
+/* свойства для заголовка модального окна */
+.modal-header {
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-align: center;
+-webkit-aligns: center;
+-ms-flex-align: center;
+aligns: center;
+-webkit-box-pack: justify;
+-webkit-justify-content: space-between;
+-ms-flex-pack: justify;
+justify-content: space-between;
+padding: 2px;
+border-bottom: 1px solid #eceeef;
+}
+.modal-title {
+margin-top: 0;
+margin-bottom: 0;
+line-height: 1.5;
+font-size: 14px;
+font-weight: 500;
+}
+/* свойства для кнопки "Закрыть"*/
+.picto {
+float: right;
+font-family: sans-serif;
+font-size: 24px;
+font-weight: 700;
+line-height: 1;
+color: #000;
+text-shadow: 0 1px 0 #fff;
+opacity: .5;
+text-decoration: none;
+}
+свойства для кнопки "Закрыть" при нахождении её в фокусе или наведении /
+.picto:focus, .picto:hover {
+color: #000;
+text-decoration: none;
+cursor: pointer;
+opacity: .75;
+}
+
+
+.Dict { padding: 0px,0px,0px, 0px;
+    /*position: relative;
+    left: 7px;
+    flex-direction: row;
+    overflow: auto;
+    overflow-x: hidden;
+    white-space: normal;
+    word-spacing: normal;
+    word-break: normal; 
+    word-wrap: break-word;
+    hyphens: auto;
+    flex-direction: row;*/
+
+}
+
+.transl-lst{
+    /*display:flex;*/flex-direction:row;align-items:center;position:relative;
+    color:var(--charcoal-grey);background-color:beige;cursor:pointer;
+    transition:all .2s ease;min-height:34px;box-sizing:border-box;padding:0 0px 0 0px}
+/*.item_votes{position:absolute;top:0;left:0;bottom:0;display:flex;justify-content:center;align-items:center;width:56px;height:100%}
+*/
+
+.option{
+    border-radius: 4px;
+    border: thin solid #00000040;
+    background-color: rgba(0, 0, 0, 0.07);
+    /* left: 4px; */
+    /* height: 100%; */
+    /* top: 0; */
+    /* left: 0; */
+    /* bottom: 0; */
+    position:relative;
+        padding: 0px,0px,0px,0px;
+
+}
+
+/*.transl-lst:hover{background-color:#edf6ff}
+.transl-lst:hover .word-card_popover-tr-icon{opacity:.6}
+.transl-lst:active{opacity:.8}
+*/
+
+.vote_line{
+    border-radius: 1px;
+    background-color:rgba(0, 0, 0, 0.2);
+    height: 4px;
+    /*left: 4px;
+
+    width:26px;
+    position:absolute;
+    display:flex;
+    justify-content:center; 
+    align-items: center;
+    top:0;left:0;bottom:0;*/
+    
+}
+
+.input_new_val {border-style: double;
+    border-color: navy;
+    /* border-image: initial; */
+    margin: 4px;
+    width: 190px;
+    height: 17px;
+    top: 0;
+    left: 0;
+    border-radius: 4px;}
+

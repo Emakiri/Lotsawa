@@ -91,6 +91,7 @@
 					</div >';
 
 					elem.prepend(newDiv);
+					document.Input_new_word.new_Word.value = "";
 
 
 				}
@@ -1669,6 +1670,7 @@
 					//clear modal window
 					document.getElementById("key").innerHTML = "";
 					document.getElementById("trnsl_opt").value = "";
+					document.getElementById("user_word").innerHTML = "";
 
 					//calculate click ID
 					var id = event.target.id; // Получили ID, т.к. в e.target содержится элемент по которому кликнули

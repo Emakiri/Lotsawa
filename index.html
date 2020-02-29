@@ -3,12 +3,15 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link rel="stylesheet" type="text/css" href="css\JS_lotsawa.css" title="description_of_style">
+	<link rel="stylesheet" type="text/css" href="css/JS_lotsawa.css" title="description_of_style">
 	<style></style>
 
 	<script type="text/javascript"></script>
-	<script src="js\TibTxt_Format.js"></script>
-	<script src="js\Click_coord.js"></script>
+	<script src="OFF_js_osbl\JS_lotsawa.js"></script>
+	<script src="js_osbl/TibTxt_Format.js"></script>
+	<script src="js_osbl/Click_coord.js"></script>
+	<script src="js_osbl/jquery-3.4.1.min.js"></script>
+
 	<title>Lotsawa</title>
 </head>
 
@@ -64,9 +67,8 @@
 			<script>
 				add_word.onclick = function (event) {
 					var new_Word = document.Input_new_word.new_Word.value;
-					document.getElementById('user_word').innerHTML = new_Word;
-
 					var key = document.getElementById('key').innerText;
+					document.getElementById('user_word').innerHTML = new_Word;
 
 					// find Result.element(key) & set new def
 					let tag = document.getElementById(key);
@@ -77,7 +79,7 @@
 
 					var newDiv = document.createElement('div');
 					newDiv.className = "usr_wrd";
-					newDiv.id = "";
+					newDiv.id = '';
 					// class="usr_wrd" id=""
 					//let liFirst = document.createElement('li');
 					//liFirst.innerHTML = 'prepend';
@@ -93,8 +95,38 @@
 					elem.prepend(newDiv);
 					document.Input_new_word.new_Word.value = "";
 
+					var jsobj={}
+					jsobj[key]=new_Word;
+
+					//var json = JSON.stringify('{key_tib: ' + key + ', ' + new_Word + ': new_Word }');
+
+					//data.append("json", json);
+
+					//let data = { "key": key, "new_Word": new_Word}
+					console.log(jsobj)
+
+					//fetch("/private/Save_country_block", {
+					//	method: "POST",
+					//	body: data
+					//}).then(function (response) {
+						// Стоит проверить код ответа.
+					//	if (!response.ok) {
+							// Сервер вернул код ответа за границами диапазона [200, 299]
+					//		return Promise.reject(new Error(
+					//			'Response failed: ' + response.status + ' (' + response.statusText + ')'
+					//		));
+					//	}
+
+					// Далее будем использовать только JSON из тела ответа.
+					//	return response.json();
+					//}).then(function (data) {
+						// ... Делаем что-то с данными.
+					//}).catch(function (error) {
+						// ... Обрабатываем ошибки.
+					//});
 				}
 			</script>
+
 			<!--<div class="footer_expanded-form">
 										<form class="new-transl_form">
 											<div class="new-transl_input-container" data-overlay="true">
@@ -126,15 +158,13 @@
 				tag.setAttribute("def", opt);
 				document.getElementById('user_word').innerHTML = opt;
 				//alert(tag.getAttribute("def"));
-				document.Input_new_word.new_Word.reset()
+				//document.Input_new_word.new_Word.reset()
 			}
 
 		</script>
 
 
 	</div>
-
-
 
 	<div id="SentenceModal" class="fon_okna">
 		<!-- jquery drag'n'drop
@@ -347,16 +377,16 @@
 							});
 		</script>-->
 
-		<script src="js\Sortable.js"></script>
+		<script src="js_osbl\Sortable.js"></script>
 		<script id="Sortablejs">
 			// Simple list
 			Sortable.create(sortable, { /* options */ });
 
 			// List with handle
-			Sortable.create(listWithHandle, {
-				handle: '.glyphicon-move',
-				animation: 150
-			});
+			//Sortable.create(listWithHandle, {
+			//	handle: '.glyphicon-move',
+			//	animation: 150
+			//});
 		</script>
 
 
@@ -381,363 +411,26 @@
 	<article class="Tib_Txt">
 		<h7 id="_@"></h7>
 		<section lang="bo" id="Result">
-			<h1 class="Toc">༄༅། །<snt class="sent" id="s1"><a id="སྐྱེས" def="be born" class="na"
-						href="#h_སྐྱེས">སྐྱེས</a>་བུ་<a id="ཆེན" def="big size" class="na" href="#h_ཆེན">ཆེན</a>་པོའི་<a
-						id="ལམ" def="..или." class="na" href="#h_ལམ">ལམ</a>་<a id="གྱི" def="cc" class="cc"
-						href="#h_གྱི">གྱི</a>་<a id="རིམ" def="nn" class="na" href="#h_རིམ">རིམ</a>་པ་<a id="ལས"
-						def="после/затем" class="na" href="#h_ལས">ལས</a>།</snt>
-				<snt class="sent" id="s2"><a id="ཐེག" def="vehicle" class="na" href="#h_ཐེག">ཐེག</a>་<a id="ཆེན"
-						def="big size" class="na" href="#h_ཆེན">ཆེན</a>་<a id="གྱི" def="cc" class="cc"
-						href="#h_གྱི">གྱི</a>་<a id="འཇུག" def="enter; engage; apply; usher (into); engages" class="na"
-						href="#h_འཇུག">འཇུག</a>་སྒོ་སེམས་<a id="བསྐྱེད" def="generate; produce; engender" class="na"
-						href="#h_བསྐྱེད">བསྐྱེད</a>་<a id="བཞུགས་སོ" def="так называется" class="na"
-						href="#h_བཞུགས་སོ">བཞུགས་སོ</a>༔</snt>
-			</h1> <br>
-			<snt class="sent" id="s3"><a id="སྨོན" def="wish; admire; pray; aspire" class="na"
-					href="#h_སྨོན">སྨོན</a>་སེམས་<a id="སྦྱང"
-					def="to learn (present nh.), purify; wash; practice; train; clean;" class="na"
-					href="#h_སྦྱང">སྦྱང</a>་བ་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་<a id="རྒྱལ"
-					def="conquest; victory" class="na" href="#h_རྒྱལ">རྒྱལ</a>་སྲས་<a id="ཀྱི" def="cc" class="cc"
-					href="#h_ཀྱི">ཀྱི</a>་<a id="སྤྱོད"
-					def="enjoy; make use of; practice; act out; perform; behavior; deeds; performance" class="na"
-					href="#h_སྤྱོད">སྤྱོད</a>་པ་སྤྱི་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="བསླབ"
-					def="to learn; teach; train in (present, past nh.)" class="na" href="#h_བསླབ">བསླབ</a>་པའི་ཚུལ།
-			</snt> །<snt class="sent" id="s4"><a id="ཐེག" def="vehicle" class="na" href="#h_ཐེག">ཐེག</a>་<a id="ཆེན"
-					def="big size" class="na" href="#h_ཆེན">ཆེན</a>་<a id="གྱི" def="cc" class="cc"
-					href="#h_གྱི">གྱི</a>་<a id="འཇུག" def="enter; engage; apply; usher (into); engages" class="na"
-					href="#h_འཇུག">འཇུག</a>་སྒོ་སེམས་<a id="བསྐྱེད" def="generate; produce; engender" class="na"
-					href="#h_བསྐྱེད">བསྐྱེད</a>་ཁོ་ནར་<a id="བསྟན" def="to show (past/present/future honorific)"
-					class="na" href="#h_བསྟན">བསྟན</a>་པ།</snt> །<snt class="sent" id="s5">བྱང་ཆུབ་སེམས་<a id="སྦྱང"
-					def="to learn (present nh.), purify; wash; practice; train; clean;" class="na"
-					href="#h_སྦྱང">སྦྱང</a>་བ་<a id="རིམ" def="nn" class="na" href="#h_རིམ">རིམ</a>་པ་<a id="ལ" def="cc"
-					class="cc" href="#h_ལ">ལ</a>་ཇོ་བོ་<a id="ནས" def="после" class="na"
-					href="#h_ནས">ནས</a>་བརྒྱུད་པ་རྒྱུ་འབྲས་མན་ངག་<a id="བདུན" def="seven" class="na"
-					href="#h_བདུན">བདུན</a>།</snt>
-			<br>
-			<h4 class="Topic">།<snt class="sent" id="s6"><a id="ཞི" def="be peaceful; be calm; peace; pacification"
-						class="na" href="#h_ཞི">ཞི</a>་བ་ལྷའི་གཞུང་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a
-						id="བརྟེན" def="depend upon; rely; resort to; support" class="na" href="#h_བརྟེན">བརྟེན</a>་<a
-						id="ནས" def="после" class="na" href="#h_ནས">ནས</a>་སྦྱུང་བ་<a id="ནི" def="..-" class="na"
-						href="#h_ནི">ནི</a>།</snt>
-			</h4> <br>
-			།<snt class="sent" id="s7">སེམས་<a id="བསྐྱེད" def="generate; produce; engender" class="na"
-					href="#h_བསྐྱེད">བསྐྱེད</a>་<a id="ནས" def="после" class="na" href="#h_ནས">ནས</a>་<a id="སྤྱོད"
-					def="enjoy; make use of; practice; act out; perform; behavior; deeds; performance" class="na"
-					href="#h_སྤྱོད">སྤྱོད</a>་པ་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="སློབ"
-					def="to learn; teach; train in" class="na" href="#h_སློབ">སློབ</a>་ཚུལ།</snt> །<snt class="sent"
-				id="s8">ཞར་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་གོ་<a id="རིམ" def="nn" class="na"
-					href="#h_རིམ">རིམ</a>་<a id="ངེས" def="ascertain; ascertainment; certain" class="na"
-					href="#h_ངེས">ངེས</a>་པ།</snt>
+<h1 class="Toc">༄༅། །<snt class="sent" id="s1"><a id="སྐྱེས་བུ" def="личность" class="na" href="#h_སྐྱེས་བུ">སྐྱེས་བུ</a>་<a id="ཆེན་པོ" def="великий༼mahatā༽@" class="na" href="#h_ཆེན་པོ">ཆེན་པོ</a><a id="འི" def="cc" class="cc" href="#h_འི">འི</a>་<a id="ལམ" def="путь*" class="na" href="#h_ལམ">ལམ</a>་<a id="གྱི" def="cc" class="cc" href="#h_གྱི">གྱི</a>་<a id="རིམ་པ" def="стадия@" class="na" href="#h_རིམ་པ">རིམ་པ</a>་<a id="ལས" def="после/затем" class="na" href="#h_ལས">ལས</a>།</snt> <snt class="sent" id="s2"><a id="ཐེག་ཆེན" def="Махаяна@" class="na" href="#h_ཐེག་ཆེན">ཐེག་ཆེན</a>་<a id="གྱི" def="cc" class="cc" href="#h_གྱི">གྱི</a>་<a id="འཇུག་སྒོ" def="входные врата@" class="na" href="#h_འཇུག་སྒོ">འཇུག་སྒོ</a>་<a id="སེམས་བསྐྱེད" def="зарождение ума@" class="na" href="#h_སེམས་བསྐྱེད">སེམས་བསྐྱེད</a>་<a id="བཞུགས" def="быть" class="na" href="#h_བཞུགས">བཞུགས</a>་<s def="¶" class="cc"><a id="སོ" def="зубы; phr.c.*" class="na" href="#h_སོ">སོ</a></s>༔</snt></h1> <br>
+ <snt class="sent" id="s3"><a id="སྨོན་སེམས" def="(зарождение) ума (и) устремления*" class="na" href="#h_སྨོན་སེམས">སྨོན་སེམས</a>་<a id="སྦྱང་བ" def="чистить" class="na" href="#h_སྦྱང་བ">སྦྱང་བ</a>་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་<a id="རྒྱལ་སྲས" def="сын Победоносных@" class="na" href="#h_རྒྱལ་སྲས">རྒྱལ་སྲས</a>་<a id="ཀྱི" def="cc" class="cc" href="#h_ཀྱི">ཀྱི</a>་<a id="སྤྱོད་པ" def="༼caryā༽поведение" class="na" href="#h_སྤྱོད་པ">སྤྱོད་པ</a>་<a id="སྤྱི" def="общий@" class="na" href="#h_སྤྱི">སྤྱི</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="བསླབ་པ" def="обучение@" class="na" href="#h_བསླབ་པ">བསླབ་པ</a><a id="འི" def="cc" class="cc" href="#h_འི">འི</a>་<a id="ཚུལ" def="способ; манера; точка зрения; мораль; претендовать на" class="na" href="#h_ཚུལ">ཚུལ</a>།</snt> །<snt class="sent" id="s4"><a id="ཐེག་ཆེན" def="Махаяна@" class="na" href="#h_ཐེག་ཆེན">ཐེག་ཆེན</a>་<a id="གྱི" def="cc" class="cc" href="#h_གྱི">གྱི</a>་<a id="འཇུག་སྒོ" def="входные врата@" class="na" href="#h_འཇུག་སྒོ">འཇུག་སྒོ</a>་<a id="སེམས་བསྐྱེད" def="зарождение ума@" class="na" href="#h_སེམས་བསྐྱེད">སེམས་བསྐྱེད</a>་<a id="ཁོ" def="он*" class="na" href="#h_ཁོ">ཁོ</a>་<a id="ནར" def="протяженность" class="na" href="#h_ནར">ནར</a>་<a id="བསྟན་པ" def="наставление" class="na" href="#h_བསྟན་པ">བསྟན་པ</a>།</snt> །<snt class="sent" id="s5"><a id="བྱང་ཆུབ་སེམས" def="«bodhicitta»устремление Пробуждения@" class="na" href="#h_བྱང་ཆུབ་སེམས">བྱང་ཆུབ་སེམས</a>་<a id="སྦྱང་བ" def="чистить" class="na" href="#h_སྦྱང་བ">སྦྱང་བ</a>་<a id="རིམ་པ" def="стадия@" class="na" href="#h_རིམ་པ">རིམ་པ</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="ཇོ་བོ" def="Джово;Владыка@" class="na" href="#h_ཇོ་བོ">ཇོ་བོ</a>་<a id="ནས" def="i.p.; d.l." class="na" href="#h_ནས">ནས</a>་<a id="བརྒྱུད་པ" def="традиция;преемственность@" class="na" href="#h_བརྒྱུད་པ">བརྒྱུད་པ</a>་<a id="རྒྱུ་འབྲས" def="причина и результат@" class="na" href="#h_རྒྱུ་འབྲས">རྒྱུ་འབྲས</a>་<a id="མན་ངག" def="упадеша;наставление*" class="na" href="#h_མན་ངག">མན་ངག</a>་<a id="བདུན" def="семь*" class="na" href="#h_བདུན">བདུན</a>།</snt> 
+<br><h4 class="Topic">།<snt class="sent" id="s6"><a id="ཞི་བ" def="мир" class="na" href="#h_ཞི་བ">ཞི་བ</a>་<a id="ལྷ" def="༼deva༽божество*" class="na" href="#h_ལྷ">ལྷ</a><a id="འི" def="cc" class="cc" href="#h_འི">འི</a>་<a id="གཞུང" def="основной" class="na" href="#h_གཞུང">གཞུང</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="བརྟེན" def="p.опираться" class="na" href="#h_བརྟེན">བརྟེན</a>་<a id="ནས" def="i.p.; d.l." class="na" href="#h_ནས">ནས</a>་སྦྱུང་བ་<a id="ནི" def="..-" class="na" href="#h_ནི">ནི</a>།</snt></h4> <br>
+ །<snt class="sent" id="s7"><a id="སེམས་བསྐྱེད" def="зарождение ума@" class="na" href="#h_སེམས་བསྐྱེད">སེམས་བསྐྱེད</a>་<a id="ནས" def="i.p.; d.l." class="na" href="#h_ནས">ནས</a>་<a id="སྤྱོད་པ" def="༼caryā༽поведение" class="na" href="#h_སྤྱོད་པ">སྤྱོད་པ</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="སློབ" def="учиться*" class="na" href="#h_སློབ">སློབ</a>་<a id="ཚུལ" def="способ; манера; точка зрения; мораль; претендовать на" class="na" href="#h_ཚུལ">ཚུལ</a>།</snt> །<snt class="sent" id="s8"><a id="ཞར" def="вторичный" class="na" href="#h_ཞར">ཞར</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="གོ་རིམ" def="порядок@" class="na" href="#h_གོ་རིམ">གོ་རིམ</a>་<a id="ངེས་པ" def="определенность" class="na" href="#h_ངེས་པ">ངེས་པ</a>།</snt> 
 
-			<br><br>༈ <snt class="sent" id="s9"><a id="རྗེ" def="master; lord; leaders" class="na"
-					href="#h_རྗེ">རྗེ</a>་བཙུན་<a id="དམ" def="..или.." class="na" href="#h_དམ">དམ</a>་པ་ཐུགས་<a
-					id="རྗེ" def="master; lord; leaders" class="na" href="#h_རྗེ">རྗེ</a>་<a id="ཆེན" def="big size"
-					class="na" href="#h_ཆེན">ཆེན</a>་པོ་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་<a id="ལྡན"
-					def="обладающий" class="na" href="#h_ལྡན">ལྡན</a>་པ་རྣམས་<a id="ཀྱི" def="cc" class="cc"
-					href="#h_ཀྱི">ཀྱི</a>་ཞབས་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་གུས་<a id="པས" def="и так"
-					class="na" href="#h_པས">པས</a>་ཕྱག་<a id="འཚལ"
-					def="seek; want; ask; beg; beseech; desire; ; to understand" class="na" href="#h_འཚལ">འཚལ</a>་ལོ།
-			</snt> <br><br>
+<br><br>༈ <snt class="sent" id="s9"><a id="རྗེ་བཙུན" def="Джецюн" class="na" href="#h_རྗེ་བཙུན">རྗེ་བཙུན</a>་<a id="དམ་པ" def="истинный" class="na" href="#h_དམ་པ">དམ་པ</a>་<a id="ཐུགས་རྗེ་ཆེན་པོ" def="великое милосердие@" class="na" href="#h_ཐུགས་རྗེ་ཆེན་པོ">ཐུགས་རྗེ་ཆེན་པོ</a>་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་<a id="ལྡན་པ" def="иметь@" class="na" href="#h_ལྡན་པ">ལྡན་པ</a>་<a id="རྣམས" def="все*" class="na" href="#h_རྣམས">རྣམས</a>་<a id="ཀྱི" def="cc" class="cc" href="#h_ཀྱི">ཀྱི</a>་<a id="ཞབས" def="h.преподобный;стопы@" class="na" href="#h_ཞབས">ཞབས</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་གུས་<a id="པས" def="i.c; q.p.*" class="na" href="#h_པས">པས</a>་<a id="ཕྱག" def="h.рука" class="na" href="#h_ཕྱག">ཕྱག</a>་<a id="འཚལ" def="imp." class="na" href="#h_འཚལ">འཚལ</a>་<s def="¶" class="cc"><a id="ལོ" def="год*" class="na" href="#h_ལོ">ལོ</a></s>།</snt> <br><br>
 
-			<snt class="sent" id="s10"><a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་<a id="ལྟར" def="ābha"
-					class="na" href="#h_ལྟར">ལྟར</a>་འཁོར་བའི་<a id="ཉེས" def="bad; sin; evil; crime" class="na"
-					href="#h_ཉེས">ཉེས</a>་<a id="དམིགས"
-					def="to observe{D2}; apprehend; be aware of; object of observation (=dmigs pa)" class="na"
-					href="#h_དམིགས">དམིགས</a>་སྒོ་<a id="སྣ་ཚོགས" def="varied, of different kinds, diversity" class="na"
-					href="#h_སྣ་ཚོགས">སྣ་ཚོགས</a>་<a id="ནས" def="после" class="na" href="#h_ནས">ནས</a>་རྒྱུན་<a
-					id="རིང" def="long time, tall, long, lengthwise" class="na" href="#h_རིང">རིང</a>་<a id="དུ"
-					def="cc" class="cc" href="#h_དུ">དུ</a>་<a id="བསྒོམས" def="meditate; meditatively cultivate"
-					class="na" href="#h_བསྒོམས">བསྒོམས</a>་པ་<a id="ལས" def="после/затем" class="na"
-					href="#h_ལས">ལས</a>་སྲིད་པ་ཐམས་ཅད་མེ་<a id="འབར"
-					def="burn; blaze up; blaze; catch fire; flaming; fire" class="na" href="#h_འབར">འབར</a>་བའི་རླུབས་<a
-					id="ལྟར" def="ābha" class="na" href="#h_ལྟར">ལྟར</a>་<a id="མཐོང"
-					def="to see; to perceive (present/passive)" class="na" href="#h_མཐོང">མཐོང</a>་<a id="སྟེ" def="cc"
-					class="cc" href="#h_སྟེ">སྟེ</a>།</snt>
-			<snt class="sent" id="s11"><a id="ཉོན" def="affliction" class="na" href="#h_ཉོན">ཉོན</a>་མོངས་པ་<a id="དང"
-					def="cc" class="cc" href="#h_དང">དང</a>་<a id="སྡུག" def="dear; kind; beloved" class="na"
-					href="#h_སྡུག">སྡུག</a>་བསྔལ་<a id="ཉེ" def="near; dear; intimate" class="na"
-					href="#h_ཉེ">ཉེ</a>་བར་<a id="ཞི" def="be peaceful; be calm; peace; pacification" class="na"
-					href="#h_ཞི">ཞི</a>་བའི་ཐར་པ་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="ཐོབ"
-					def="attain; obtain; get, to win" class="na" href="#h_ཐོབ">ཐོབ</a>་<a id="འདོད"
-					def="accept; assert; wish; desire; consider; to want (used with other verbs)" class="na"
-					href="#h_འདོད">འདོད</a>་<a id="ཀྱིས" def="cc" class="cc" href="#h_ཀྱིས">ཀྱིས</a>་ཡིད་ཀུན་<a id="ཏུ"
-					def="cc" class="cc" href="#h_ཏུ">ཏུ</a>་<a id="གདུངས"
-					def="torment; be tormented; be scorched; desire; long for" class="na"
-					href="#h_གདུངས">གདུངས</a>་པ་དེས།</snt>
-			<snt class="sent" id="s12"><a id="ལམ" def="..или." class="na" href="#h_ལམ">ལམ</a>་<a id="བསླབ"
-					def="to learn; teach; train in (present, past nh.)" class="na" href="#h_བསླབ">བསླབ</a>་པ་རིན་པོ་<a
-					id="ཆེ" def="great, large, big, senior, elder" class="na" href="#h_ཆེ">ཆེ</a>་<a id="གསུམ"
-					def="three" class="na" href="#h_གསུམ">གསུམ</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a
-					id="བསླབས" def="to learn; teach; train in (present, past nh.)" class="na"
-					href="#h_བསླབས">བསླབས</a>་<a id="ན" def="cc" class="cc" href="#h_ན">ན</a>་འཁོར་བ་<a id="ལས"
-					def="после/затем" class="na" href="#h_ལས">ལས</a>་<a id="གྲོལ" def="released; loosened; freed"
-					class="na" href="#h_གྲོལ">གྲོལ</a>་བའི་ཐར་པ་<a id="འཐོབ"
-					def="get; attain; will get; will attain [future of thob]" class="na" href="#h_འཐོབ">འཐོབ</a>་ཅིང༌།
-			</snt>
-			<snt class="sent" id="s13"><a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་<a id="ཡང"
-					def="['и .. тоже', 'действительно', 'слишком', 'хотя..', 'но..', 'даже..', 'тоже', 'также..']"
-					class="na" href="#h_ཡང">ཡང</a>་<a id="མཐོ" def="high; elevated, prominent; superior" class="na"
-					href="#h_མཐོ">མཐོ</a>་རིས་<a id="ཀྱི" def="cc" class="cc" href="#h_ཀྱི">ཀྱི</a>་དཔལ་<a id="ལྟར"
-					def="ābha" class="na" href="#h_ལྟར">ལྟར</a>་སླར་<a id="ལྡོག"
-					def="reverse; cease; turn around; isolate; eliminate; reversed" class="na"
-					href="#h_ལྡོག">ལྡོག</a>་པ་<a id="ཡང"
-					def="['и .. тоже', 'действительно', 'слишком', 'хотя..', 'но..', 'даже..', 'тоже', 'также..']"
-					class="na" href="#h_ཡང">ཡང</a>་མ་ཡིན་མོད།</snt>
-			<snt class="sent" id="s14">འོན་<a id="ཀྱང" def="и .. тоже" class="na" href="#h_ཀྱང">ཀྱང</a>་སྐྱོན་<a id="ཟད"
-					def="use up; exhaust; consume; subsume; extinction; removal; exhaustion; used up; exhausted; extinct; extinguished; consumed; subsumed; ; [with negative:] not only; inexhaustible"
-					class="na" href="#h_ཟད">ཟད</a>་པ་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་ཡོན་ཏན་<a
-					id="ཐོབ" def="attain; obtain; get, to win" class="na" href="#h_ཐོབ">ཐོབ</a>་པ་ཕྱོགས་<a id="རེ"
-					def="each; every; single; hope" class="na" href="#h_རེ">རེ</a>་བ་ཡིན་<a id="པས" def="и так"
-					class="na" href="#h_པས">པས</a>་རང་<a id="གི" def="cc" class="cc" href="#h_གི">གི</a>་<a id="དོན"
-					def="nn" class="na" href="#h_དོན">དོན</a>་མ་<a id="རྫོགས"
-					def="complete; end; finish; perfect; fulfill; terminate" class="na" href="#h_རྫོགས">རྫོགས</a>་<a
-					id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="དེ" def="cc" class="cc"
-					href="#h_དེ">དེ</a>་ཉིད་<a id="ཀྱིས" def="cc" class="cc" href="#h_ཀྱིས">ཀྱིས</a>་<a id="ན" def="cc"
-					class="cc" href="#h_ན">ན</a>་གཞན་<a id="གྱི" def="cc" class="cc" href="#h_གྱི">གྱི</a>་<a id="དོན"
-					def="nn" class="na" href="#h_དོན">དོན</a>་<a id="ཡང"
-					def="['и .. тоже', 'действительно', 'слишком', 'хотя..', 'но..', 'даже..', 'тоже', 'также..']"
-					class="na" href="#h_ཡང">ཡང</a>་ཉི་ཚེ་བར་<a id="ཟད"
-					def="use up; exhaust; consume; subsume; extinction; removal; exhaustion; used up; exhausted; extinct; extinguished; consumed; subsumed; ; [with negative:] not only; inexhaustible"
-					class="na" href="#h_ཟད">ཟད</a>་ཅིང༌།</snt>
-			<snt class="sent" id="s15">མཐར་<a id="སངས་རྒྱས" def="nn" class="na" href="#h_སངས་རྒྱས">སངས་རྒྱས</a>་<a
-					id="ཀྱིས" def="cc" class="cc" href="#h_ཀྱིས">ཀྱིས</a>་<a id="བསྐུལ"
-					def="rouse; arouse; entreat; urge on; incite; urge; exhort" class="na" href="#h_བསྐུལ">བསྐུལ</a>་<a
-					id="ནས" def="после" class="na" href="#h_ནས">ནས</a>་<a id="ཐེག" def="vehicle" class="na"
-					href="#h_ཐེག">ཐེག</a>་<a id="ཆེན" def="big size" class="na" href="#h_ཆེན">ཆེན</a>་<a id="དུ"
-					def="cc" class="cc" href="#h_དུ">དུ</a>་<a id="འཇུག"
-					def="enter; engage; apply; usher (into); engages" class="na" href="#h_འཇུག">འཇུག</a>་དགོས་<a id="པས"
-					def="и так" class="na" href="#h_པས">པས</a>་<a id="ན" def="cc" class="cc" href="#h_ན">ན</a>།</snt>
-			<snt class="sent" id="s16">བློ་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་<a id="ལྡན"
-					def="обладающий" class="na" href="#h_ལྡན">ལྡན</a>་པ་རྣམས་<a id="ཀྱིས" def="cc" class="cc"
-					href="#h_ཀྱིས">ཀྱིས</a>་<a id="ནི" def="..-" class="na" href="#h_ནི">ནི</a>་ཐོག་མ་<a id="ནས"
-					def="после" class="na" href="#h_ནས">ནས</a>་<a id="ཐེག" def="vehicle" class="na"
-					href="#h_ཐེག">ཐེག</a>་པ་<a id="ཆེན" def="big size" class="na" href="#h_ཆེན">ཆེན</a>་པོར་<a id="འཇུག"
-					def="enter; engage; apply; usher (into); engages" class="na" href="#h_འཇུག">འཇུག</a>་པར་རིགས་<a
-					id="ཏེ" def="cc" class="cc" href="#h_ཏེ">ཏེ</a>།</snt>
-			<br>
-			<snt class="cite_src">།ཕར་<a id="ཕྱིན" def="went [past of 'gro, 'to go']" class="na"
-					href="#h_ཕྱིན">ཕྱིན</a>་<a id="བསྡུས" def="collect; conclude; gather; include; abridge" class="na"
-					href="#h_བསྡུས">བསྡུས</a>་པ་<a id="ལས" def="после/затем" class="na" href="#h_ལས">ལས</a>།</snt>
-			<div class="cite">།<snt class="sent" id="s17"><a id="འཇིག" def="to disintegrate; disintegrate; destroy"
-						class="na" href="#h_འཇིག">འཇིག</a>་རྟེན་<a id="དོན" def="nn" class="na" href="#h_དོན">དོན</a>་<a
-						id="སྒྲུབ" def="achieve; attain; accomplish; prove; complete; practice" class="na"
-						href="#h_སྒྲུབ">སྒྲུབ</a>་ཚུལ་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་མཐུ་<a id="མེད"
-						def="после་ отрицаемого" class="na" href="#h_མེད">མེད</a>་པའི།</snt> །<snt class="sent"
-					id="s18"><a id="ཐེག" def="vehicle" class="na" href="#h_ཐེག">ཐེག</a>་པ་<a id="གཉིས" def="two"
-						class="na" href="#h_གཉིས">གཉིས</a>་པོ་གཏན་<a id="དུ" def="cc" class="cc" href="#h_དུ">དུ</a>་<a
-						id="སྤང" def="abandon; give up; eliminate; dispel; dispell; set aside" class="na"
-						href="#h_སྤང">སྤང</a>་<a id="བྱས"
-						def="vb, do; act; perform; fabricate; take ... as; noun: action; activity; performance {C}produced; conditioned; compounded; effected (fut.t.)"
-						class="na" href="#h_བྱས">བྱས</a>་ཤིང༌།</snt> །<snt class="sent" id="s19">ཐུབ་<a id="རྒྱལ"
-						def="conquest; victory" class="na" href="#h_རྒྱལ">རྒྱལ</a>་<a id="ཐེག" def="vehicle" class="na"
-						href="#h_ཐེག">ཐེག</a>་པ་སྙིང་<a id="རྗེས" def="after; subsequent to" class="na"
-						href="#h_རྗེས">རྗེས</a>་<a id="བསྟན" def="to show (past/present/future honorific)" class="na"
-						href="#h_བསྟན">བསྟན</a>་པ་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>།</snt> །<snt
-					class="sent" id="s20">གཞན་<a id="ཕན" def="help; benefit; be of use" class="na"
-						href="#h_ཕན">ཕན</a>་རོ་<a id="གཅིག" def="same, one; oneness; distinguished by; unitary"
-						class="na" href="#h_གཅིག">གཅིག</a>་རང་<a id="བཞིན" def="-ing" class="na"
-						href="#h_བཞིན">བཞིན</a>་<a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་<a id="དག"
-						def="1) to purify; to clean; 2) plural marker" class="na" href="#h_དག">དག</a>་<a id="འཇུག"
-						def="enter; engage; apply; usher (into); engages" class="na" href="#h_འཇུག">འཇུག</a></snt>
-			</div>།<snt class="sent" id="s21"><a id="ཅེས" def=".. - это.." class="na" href="#h_ཅེས">ཅེས</a>་དང༌།</snt>
-			<div class="cite">།<snt class="sent" id="s22">བདེ་<a id="དང" def="cc" class="cc"
-						href="#h_དང">དང</a>་མི་བདེ་རྨི་<a id="ལམ" def="..или." class="na" href="#h_ལམ">ལམ</a>་འདྲར་<a
-						id="བགྲངས" def="count; number; calculate; compute; reckon; enumerate; tally; numerate"
-						class="na" href="#h_བགྲངས">བགྲངས</a>་ཤིང༌།</snt> །<snt class="sent" id="s23">གཏི་མུག་སྐྱོན་<a
-						id="གྱིས" def="cc" class="cc" href="#h_གྱིས">གྱིས</a>་དམའ་བའི་<a id="འགྲོ"
-						def="vb, go; (pres) become; serve; act; noun: transmigrator; goer" class="na"
-						href="#h_འགྲོ">འགྲོ</a>་<a id="མཐོང" def="to see; to perceive (present/passive)" class="na"
-						href="#h_མཐོང">མཐོང</a>་<a id="ན" def="cc" class="cc" href="#h_ན">ན</a>།</snt> །<snt
-					class="sent" id="s24"><a id="ལས" def="после/затем" class="na" href="#h_ལས">ལས</a>་<a id="ཀྱི"
-						def="cc" class="cc" href="#h_ཀྱི">ཀྱི</a>་<a id="དམ" def="..или.." class="na"
-						href="#h_དམ">དམ</a>་པ་གཞན་<a id="དོན" def="nn" class="na" href="#h_དོན">དོན</a>་<a id="དགའ"
-						def="joy; happiness; liking" class="na" href="#h_དགའ">དགའ</a>་<a id="བོར"
-						def="to throw away; to give up or cast aside" class="na" href="#h_བོར">བོར</a>་ཞིང༌།</snt> །<snt
-					class="sent" id="s25">རང་<a id="གི" def="cc" class="cc" href="#h_གི">གི</a>་<a id="དོན" def="nn"
-						class="na" href="#h_དོན">དོན</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="དེ"
-						def="cc" class="cc" href="#h_དེ">དེ</a>་ཀོ་<a id="ཅི་སྟེ" def="в случае/но если...?" class="na"
-						href="#h_ཅི་སྟེ">ཅི་སྟེ</a>་<a id="བརྩོན"
-						def="vb, to endeavor; make effort; strive; exert oneself; noun: effort; endeavor; exertion"
-						class="na" href="#h_བརྩོན">བརྩོན</a>།</snt>
-			</div> <br></div> <br>
-			།<snt class="sent" id="s26"><a id="ཞེས" def=".. - это.." class="na" href="#h_ཞེས">ཞེས</a>་<a id="གསུངས"
-					def="said; mentioned; say; talk H" class="na" href="#h_གསུངས">གསུངས</a>་པ་<a id="ལྟར" def="ābha"
-					class="na" href="#h_ལྟར">ལྟར</a>་རོ།</snt><br>
-			<br>
-			།<snt class="sent" id="s27"><a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་<a id="ལྟར" def="ābha"
-					class="na" href="#h_ལྟར">ལྟར</a>་རང་ཉིད་སྲིད་པའི་མཚོར་ལྷུང་བ་<a id="དང" def="cc" class="cc"
-					href="#h_དང">དང</a>་<a id="འདྲ" def="similar; same; similarity; likeness; like; similar; image"
-					class="na" href="#h_འདྲ">འདྲ</a>་བར་<a id="འགྲོ"
-					def="vb, go; (pres) become; serve; act; noun: transmigrator; goer" class="na"
-					href="#h_འགྲོ">འགྲོ</a>་བ་རྣམས་<a id="ཀྱང" def="и .. тоже" class="na" href="#h_ཀྱང">ཀྱང</a>་<a
-					id="བླང" def="adopt; adopting; assume; take up; take; receive; assert; assertion" class="na"
-					href="#h_བླང">བླང</a>་<a id="དོར" def="discard; reject; cast out; forsake; cancel" class="na"
-					href="#h_དོར">དོར</a>་<a id="འབྱེད" def="to separate; open; separate; differentiate{BJ}; opener{BR}"
-					class="na" href="#h_འབྱེད">འབྱེད</a>་པའི་<a id="ཤེས་རབ" def="nn" class="na"
-					href="#h_ཤེས་རབ">ཤེས་རབ</a>་<a id="ཀྱི" def="cc" class="cc" href="#h_ཀྱི">ཀྱི</a>་མིག་ཟུམ་<a id="པས"
-					def="и так" class="na" href="#h_པས">པས</a>་ཉམ་<a id="ང" def="я" class="na" href="#h_ང">ང</a>་བ་<a
-					id="དང" def="cc" class="cc" href="#h_དང">དང</a>་<a id="བྲལ"
-					def="separation; free from; lack; devoid; separate from" class="na"
-					href="#h_བྲལ">བྲལ</a>་བའི་ཕྱོགས་<a id="སུ" def="кто" class="na" href="#h_སུ">སུ</a>་<a id="བགྲོད"
-					def="progress; get along; advance; proceed; travel; go; traverse; vehicle" class="na"
-					href="#h_བགྲོད">བགྲོད</a>་མི་<a id="ནུས" def="ability; able; potency; power; capacity" class="na"
-					href="#h_ནུས">ནུས</a>་པར་གོམ་འགྲོས་འཁྱོར་བ་<a id="མཐོང" def="to see; to perceive (present/passive)"
-					class="na" href="#h_མཐོང">མཐོང</a>་<a id="ན" def="cc" class="cc" href="#h_ན">ན</a>།</snt>
-			<snt class="sent" id="s28"><a id="རྒྱལ" def="conquest; victory" class="na"
-					href="#h_རྒྱལ">རྒྱལ</a>་བའི་རིགས་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་<a id="ལྡན"
-					def="обладающий" class="na" href="#h_ལྡན">ལྡན</a>་པ་རྣམས་གཞན་<a id="ལ" def="cc" class="cc"
-					href="#h_ལ">ལ</a>་<a id="བརྩེ" def="noun: mercy; love; kindness; vb, feel mercy; pity; love"
-					class="na" href="#h_བརྩེ">བརྩེ</a>་བ་<a id="མེད" def="после་ отрицаемого" class="na"
-					href="#h_མེད">མེད</a>་པ་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་<a id="དེ" def="cc"
-					class="cc" href="#h_དེ">དེ</a>་<a id="དག" def="1) to purify; to clean; 2) plural marker" class="na"
-					href="#h_དག">དག</a>་<a id="གི" def="cc" class="cc" href="#h_གི">གི</a>་<a id="དོན" def="nn"
-					class="na" href="#h_དོན">དོན</a>་<a id="དུ" def="cc" class="cc" href="#h_དུ">དུ</a>་མི་<a id="བརྩོན"
-					def="vb, to endeavor; make effort; strive; exert oneself; noun: effort; endeavor; exertion"
-					class="na" href="#h_བརྩོན">བརྩོན</a>་པ་<a id="ནི" def="..-" class="na"
-					href="#h_ནི">ནི</a>་མི་རིགས་<a id="ཏེ" def="cc" class="cc" href="#h_ཏེ">ཏེ</a>།</snt>
-			<br>
-			<snt class="cite_src">།<a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་ཉིད་<a id="ལས" def="после/затем"
-					class="na" href="#h_ལས">ལས</a>།</snt>
-			<div class="cite">།<snt class="sent" id="s29"><a id="ཤེས་རབ" def="nn" class="na"
-						href="#h_ཤེས་རབ">ཤེས་རབ</a>་མིག་ཟུམ་འགྲོས་འཁྱོར་<a id="གྱུར"
-						def="become; change; transform; arise; be" class="na" href="#h_གྱུར">གྱུར</a>་པ་<a id="ལ"
-						def="cc" class="cc" href="#h_ལ">ལ</a>།</snt> །<snt class="sent" id="s30"><a id="འཇིག"
-						def="to disintegrate; disintegrate; destroy" class="na" href="#h_འཇིག">འཇིག</a>་རྟེན་<a id="དོན"
-						def="nn" class="na" href="#h_དོན">དོན</a>་<a id="སྒྲུབ"
-						def="achieve; attain; accomplish; prove; complete; practice" class="na"
-						href="#h_སྒྲུབ">སྒྲུབ</a>་<a id="རྒྱལ" def="conquest; victory" class="na"
-						href="#h_རྒྱལ">རྒྱལ</a>་བའི་<a id="རྒྱལ" def="conquest; victory" class="na"
-						href="#h_རྒྱལ">རྒྱལ</a>་རིགས་<a id="ན" def="cc" class="cc" href="#h_ན">ན</a>།</snt> །<snt
-					class="sent" id="s31"><a id="སྙིང་རྗེ"
-						def="pretty, nice, beautiful, compassion, kindness, mercy, pity" class="na"
-						href="#h_སྙིང་རྗེ">སྙིང་རྗེ</a>་མི་<a id="བསྐྱེད" def="generate; produce; engender" class="na"
-						href="#h_བསྐྱེད">བསྐྱེད</a>་<a id="སྐྱེས" def="be born" class="na"
-						href="#h_སྐྱེས">སྐྱེས</a>་བུ་<a id="གང" def="чего/какой бы" class="na" href="#h_གང">གང</a>་<a
-						id="ཞིག" def="побуждение" class="na" href="#h_ཞིག">ཞིག</a>་<a id="ཡོད" def="be" class="na"
-						href="#h_ཡོད">ཡོད</a>།</snt> །<snt class="sent" id="s32"><a id="དེ" def="cc" class="cc"
-						href="#h_དེ">དེ</a>་<a id="དག" def="1) to purify; to clean; 2) plural marker" class="na"
-						href="#h_དག">དག</a>་<a id="རྨོངས" def="obscuration; delusion; confusion; ignorance; dullness"
-						class="na" href="#h_རྨོངས">རྨོངས</a>་<a id="བསལ"
-						def="clear away; remove; throw off; eradicate; separate" class="na" href="#h_བསལ">བསལ</a>་<a
-						id="བརྩོན"
-						def="vb, to endeavor; make effort; strive; exert oneself; noun: effort; endeavor; exertion"
-						class="na" href="#h_བརྩོན">བརྩོན</a>་<a id="འགྲུས" def="zeal; enthusiasm; diligence" class="na"
-						href="#h_འགྲུས">འགྲུས</a>་<a id="སུ" def="кто" class="na" href="#h_སུ">སུ</a>་མི་<a id="རྩོམ"
-						def="begin; initiate; compose; write a book" class="na" href="#h_རྩོམ">རྩོམ</a>།</snt>
-			</div> <br>
-			།<snt class="sent" id="s33"><a id="ཞེས" def=".. - это.." class="na" href="#h_ཞེས">ཞེས</a>་སོ།</snt><br>
-			།<snt class="sent" id="s34"><a id="འདི" def="это" class="na" href="#h_འདི">འདི</a>་<a id="ན" def="cc"
-					class="cc" href="#h_ན">ན</a>་<a id="སྐྱེས" def="be born" class="na"
-					href="#h_སྐྱེས">སྐྱེས</a>་བུ་རྣམས་<a id="ཀྱི" def="cc" class="cc" href="#h_ཀྱི">ཀྱི</a>་བདེ་བ་<a
-					id="དང" def="cc" class="cc" href="#h_དང">དང</a>་<a id="བརྗིད" def="shine; glitter" class="na"
-					href="#h_བརྗིད">བརྗིད</a>་བག་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་<a id="སྐྱེས"
-					def="be born" class="na" href="#h_སྐྱེས">སྐྱེས</a>་བུའི་<a id="རྩལ"
-					def="capacity; manifest capacity; dexterity; power" class="na" href="#h_རྩལ">རྩལ</a>་<a id="ནི"
-					def="..-" class="na" href="#h_ནི">ནི</a>་གཞན་<a id="གྱི" def="cc" class="cc"
-					href="#h_གྱི">གྱི</a>་<a id="དོན" def="nn" class="na" href="#h_དོན">དོན</a>་<a id="ཁུར"
-					def="burden; load" class="na" href="#h_ཁུར">ཁུར</a>་<a id="དུ" def="cc" class="cc"
-					href="#h_དུ">དུ</a>་<a id="འཁྱེར" def="to carry; bear; bring" class="na"
-					href="#h_འཁྱེར">འཁྱེར</a>་བ་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="བྱ"
-					def="1. activity; object; deed; do; action to do; make; perform 2. bird (pas.t.)" class="na"
-					href="#h_བྱ">བྱ</a>་བར་རིགས་<a id="ཏེ" def="cc" class="cc" href="#h_ཏེ">ཏེ</a>།</snt>
-			<snt class="sent" id="s35">རང་<a id="གི" def="cc" class="cc" href="#h_གི">གི</a>་<a id="དོན" def="nn"
-					class="na" href="#h_དོན">དོན</a>་<a id="ཙམ" def="approximately, roughly" class="na"
-					href="#h_ཙམ">ཙམ</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="དམིགས"
-					def="to observe{D2}; apprehend; be aware of; object of observation (=dmigs pa)" class="na"
-					href="#h_དམིགས">དམིགས</a>་པ་<a id="ནི" def="..-" class="na" href="#h_ནི">ནི</a>་དུད་<a id="འགྲོ"
-					def="vb, go; (pres) become; serve; act; noun: transmigrator; goer" class="na"
-					href="#h_འགྲོ">འགྲོ</a>་རྣམས་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་<a id="ཡང"
-					def="['и .. тоже', 'действительно', 'слишком', 'хотя..', 'но..', 'даже..', 'тоже', 'также..']"
-					class="na" href="#h_ཡང">ཡང</a>་ཐུན་མོང་བ་ཡིན་པའི་ཕྱིར་རོ།</snt> <br><br>
+ <snt class="sent" id="s10"><a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་<a id="ལྟར" def="ābha" class="na" href="#h_ལྟར">ལྟར</a>་<a id="འཁོར་བ" def="༼saṃsāra༽сансара;круговорот@" class="na" href="#h_འཁོར་བ">འཁོར་བ</a><a id="འི" def="cc" class="cc" href="#h_འི">འི</a>་<a id="ཉེས་དམིགས" def="изъяны" class="na" href="#h_ཉེས་དམིགས">ཉེས་དམིགས</a>་<a id="སྒོ" def="врата*" class="na" href="#h_སྒོ">སྒོ</a>་<a id="སྣ་ཚོགས" def="всевозможные@" class="na" href="#h_སྣ་ཚོགས">སྣ་ཚོགས</a>་<a id="ནས" def="i.p.; d.l." class="na" href="#h_ནས">ནས</a>་<a id="རྒྱུན" def="༼samtina༽течение" class="na" href="#h_རྒྱུན">རྒྱུན</a>་<a id="རིང" def="когда; далеко*" class="na" href="#h_རིང">རིང</a>་<a id="དུ" def="cc" class="cc" href="#h_དུ">དུ</a>་<a id="བསྒོམས་པ" def="p.культивировать*" class="na" href="#h_བསྒོམས་པ">བསྒོམས་པ</a>་<a id="ལས" def="после/затем" class="na" href="#h_ལས">ལས</a>་<a id="སྲིད་པ" def="༼bhava༽становление (10-е звено взаимозависимости);существование*" class="na" href="#h_སྲིད་པ">སྲིད་པ</a>་<a id="ཐམས་ཅད" def="все@" class="na" href="#h_ཐམས་ཅད">ཐམས་ཅད</a>་<a id="མེ" def="огонь༼tejo༽*" class="na" href="#h_མེ">མེ</a>་<a id="འབར་བ" def="гореть;сверкать;вспыхивать@" class="na" href="#h_འབར་བ">འབར་བ</a><a id="འི" def="cc" class="cc" href="#h_འི">འི</a>་རླུབས་<a id="ལྟར" def="ābha" class="na" href="#h_ལྟར">ལྟར</a>་<a id="མཐོང" def="понимать; видеть*" class="na" href="#h_མཐོང">མཐོང</a>་<a id="སྟེ" def="cc" class="cc" href="#h_སྟེ">སྟེ</a>།</snt> <snt class="sent" id="s11"><a id="ཉོན་མོངས་པ" def="пороки༼kleśa༽@" class="na" href="#h_ཉོན་མོངས་པ">ཉོན་མོངས་པ</a>་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་<a id="སྡུག་བསྔལ" def="༼duḥkha༽страдание" class="na" href="#h_སྡུག་བསྔལ">སྡུག་བསྔལ</a>་<a id="ཉེ" def="рядом*" class="na" href="#h_ཉེ">ཉེ</a>་<a id="བར" def="d.l.; туда" class="na" href="#h_བར">བར</a>་<a id="ཞི་བ" def="мир" class="na" href="#h_ཞི་བ">ཞི་བ</a><a id="འི" def="cc" class="cc" href="#h_འི">འི</a>་<a id="ཐར་པ" def="освобождение@" class="na" href="#h_ཐར་པ">ཐར་པ</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="ཐོབ" def="получать*" class="na" href="#h_ཐོབ">ཐོབ</a>་<a id="འདོད" def="хотеть" class="na" href="#h_འདོད">འདོད</a>་<a id="ཀྱིས" def="cc" class="cc" href="#h_ཀྱིས">ཀྱིས</a>་<a id="ཡིད" def="༼manas༽ум" class="na" href="#h_ཡིད">ཡིད</a>་<a id="ཀུན་ཏུ" def="༼saṃ-༽все" class="na" href="#h_ཀུན་ཏུ">ཀུན་ཏུ</a>་<a id="གདུངས་པ" def="страдающий@" class="na" href="#h_གདུངས་པ">གདུངས་པ</a>་<a id="དེས" def="этим*" class="na" href="#h_དེས">དེས</a>།</snt> <snt class="sent" id="s12"><a id="ལམ" def="путь*" class="na" href="#h_ལམ">ལམ</a>་<a id="བསླབ་པ" def="обучение@" class="na" href="#h_བསླབ་པ">བསླབ་པ</a>་<a id="རིན་པོ་ཆེ" def="драгоценный@" class="na" href="#h_རིན་པོ་ཆེ">རིན་པོ་ཆེ</a>་<a id="གསུམ" def="три*" class="na" href="#h_གསུམ">གསུམ</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="བསླབས" def="изученный@" class="na" href="#h_བསླབས">བསླབས</a>་<a id="ན" def="cc" class="cc" href="#h_ན">ན</a>་<a id="འཁོར་བ" def="༼saṃsāra༽сансара;круговорот@" class="na" href="#h_འཁོར་བ">འཁོར་བ</a>་<a id="ལས" def="после/затем" class="na" href="#h_ལས">ལས</a>་<a id="གྲོལ་བ" def="освобождение@" class="na" href="#h_གྲོལ་བ">གྲོལ་བ</a><a id="འི" def="cc" class="cc" href="#h_འི">འི</a>་<a id="ཐར་པ" def="освобождение@" class="na" href="#h_ཐར་པ">ཐར་པ</a>་<a id="འཐོབ" def="достигнуть@" class="na" href="#h_འཐོབ">འཐོབ</a>་<a id="ཅིང" def="когда; и; обр.наречия*" class="na" href="#h_ཅིང">ཅིང</a>་།</snt> <snt class="sent" id="s13"><a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་<a id="ཡང" def="уступ.ч.; как; также; хотя" class="na" href="#h_ཡང">ཡང</a>་<a id="མཐོ་རིས" def="༼svarga༽высшие миры(богов и людей)" class="na" href="#h_མཐོ་རིས">མཐོ་རིས</a>་<a id="ཀྱི" def="cc" class="cc" href="#h_ཀྱི">ཀྱི</a>་<a id="དཔལ" def="прославленный; Шри*" class="na" href="#h_དཔལ">དཔལ</a>་<a id="ལྟར" def="ābha" class="na" href="#h_ལྟར">ལྟར</a>་<a id="སླར" def="༼api-༽снова" class="na" href="#h_སླར">སླར</a>་<a id="ལྡོག་པ" def="возврат" class="na" href="#h_ལྡོག་པ">ལྡོག་པ</a>་<a id="ཡང" def="уступ.ч.; как; также; хотя" class="na" href="#h_ཡང">ཡང</a>་<a id="མ" def="n.p.; мать*" class="na" href="#h_མ">མ</a>་<a id="ཡིན" def="есть" class="na" href="#h_ཡིན">ཡིན</a>་<a id="མོད" def="но" class="na" href="#h_མོད">མོད</a>།</snt> <snt class="sent" id="s14"><a id="འོན" def="но*" class="na" href="#h_འོན">འོན</a>་<a id="ཀྱང" def="и .. тоже" class="na" href="#h_ཀྱང">ཀྱང</a>་<a id="སྐྱོན" def="вред; p.поместить*" class="na" href="#h_སྐྱོན">སྐྱོན</a>་<a id="ཟད་པ" def="p.прекращение" class="na" href="#h_ཟད་པ">ཟད་པ</a>་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་<a id="ཡོན་ཏན" def="добродетель" class="na" href="#h_ཡོན་ཏན">ཡོན་ཏན</a>་<a id="ཐོབ་པ" def="достижение" class="na" href="#h_ཐོབ་པ">ཐོབ་པ</a>་<a id="ཕྱོགས" def="направление; обусловленность*" class="na" href="#h_ཕྱོགས">ཕྱོགས</a>་<a id="རེ་བ" def="надежда" class="na" href="#h_རེ་བ">རེ་བ</a>་<a id="ཡིན" def="есть" class="na" href="#h_ཡིན">ཡིན</a>་<a id="པས" def="i.c; q.p.*" class="na" href="#h_པས">པས</a>་<a id="རང" def="собственный" class="na" href="#h_རང">རང</a>་<a id="གི" def="cc" class="cc" href="#h_གི">གི</a>་<a id="དོན" def="подлинный; польза; смысл" class="na" href="#h_དོན">དོན</a>་<a id="མ" def="n.p.; мать*" class="na" href="#h_མ">མ</a>་<a id="རྫོགས" def="совершенный; завершать*" class="na" href="#h_རྫོགས">རྫོགས</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="དེ་ཉིད" def="༼tattva༽таковость*" class="na" href="#h_དེ་ཉིད">དེ་ཉིད</a>་<a id="ཀྱིས" def="cc" class="cc" href="#h_ཀྱིས">ཀྱིས</a>་<a id="ན" def="cc" class="cc" href="#h_ན">ན</a>་<a id="གཞན" def="другой; другие*" class="na" href="#h_གཞན">གཞན</a>་<a id="གྱི" def="cc" class="cc" href="#h_གྱི">གྱི</a>་<a id="དོན" def="подлинный; польза; смысл" class="na" href="#h_དོན">དོན</a>་<a id="ཡང" def="уступ.ч.; как; также; хотя" class="na" href="#h_ཡང">ཡང</a>་<a id="ཉི" def="два*" class="na" href="#h_ཉི">ཉི</a>་<a id="ཚེ" def="жизнь" class="na" href="#h_ཚེ">ཚེ</a>་<a id="བར" def="d.l.; туда" class="na" href="#h_བར">བར</a>་<a id="ཟད" def="завершать; прекращать*" class="na" href="#h_ཟད">ཟད</a>་<a id="ཅིང" def="когда; и; обр.наречия*" class="na" href="#h_ཅིང">ཅིང</a>་།</snt> <snt class="sent" id="s15">མཐར་<a id="སངས་རྒྱས" def="Будда@" class="na" href="#h_སངས་རྒྱས">སངས་རྒྱས</a>་<a id="ཀྱིས" def="cc" class="cc" href="#h_ཀྱིས">ཀྱིས</a>་<a id="བསྐུལ" def="взывать" class="na" href="#h_བསྐུལ">བསྐུལ</a>་<a id="ནས" def="i.p.; d.l." class="na" href="#h_ནས">ནས</a>་<a id="ཐེག་ཆེན" def="Махаяна@" class="na" href="#h_ཐེག་ཆེན">ཐེག་ཆེན</a>་<a id="དུ" def="cc" class="cc" href="#h_དུ">དུ</a>་<a id="འཇུག" def="p.вступить;следовать@" class="na" href="#h_འཇུག">འཇུག</a>་<a id="དགོས" def="хотеть" class="na" href="#h_དགོས">དགོས</a>་<a id="པས" def="i.c; q.p.*" class="na" href="#h_པས">པས</a>་<a id="ན" def="cc" class="cc" href="#h_ན">ན</a>།</snt> <snt class="sent" id="s16"><a id="བློ" def="༼buddhi༽разум*" class="na" href="#h_བློ">བློ</a>་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་<a id="ལྡན་པ" def="иметь@" class="na" href="#h_ལྡན་པ">ལྡན་པ</a>་<a id="རྣམས" def="все*" class="na" href="#h_རྣམས">རྣམས</a>་<a id="ཀྱིས" def="cc" class="cc" href="#h_ཀྱིས">ཀྱིས</a>་<a id="ནི" def="..-" class="na" href="#h_ནི">ནི</a>་<a id="ཐོག་མ" def="начало@" class="na" href="#h_ཐོག་མ">ཐོག་མ</a>་<a id="ནས" def="i.p.; d.l." class="na" href="#h_ནས">ནས</a>་<a id="ཐེག་པ" def="колесница@" class="na" href="#h_ཐེག་པ">ཐེག་པ</a>་<a id="ཆེན་པོ" def="великий༼mahatā༽@" class="na" href="#h_ཆེན་པོ">ཆེན་པོ</a><a id="ར" def="cc" class="cc" href="#h_ར">ར</a>་<a id="འཇུག་པ" def="применение;вхождение@" class="na" href="#h_འཇུག་པ">འཇུག་པ</a><a id="ར" def="cc" class="cc" href="#h_ར">ར</a>་<a id="རིགས" def="виды; семейство*" class="na" href="#h_རིགས">རིགས</a>་<a id="ཏེ" def="тогда; когда*" class="na" href="#h_ཏེ">ཏེ</a>།</snt> 
+<br><snt class="cite_src">།<a id="ཕར་ཕྱིན" def="Парамиты@" class="na" href="#h_ཕར་ཕྱིན">ཕར་ཕྱིན</a>་<a id="བསྡུས་པ" def="собирание@" class="na" href="#h_བསྡུས་པ">བསྡུས་པ</a>་<a id="ལས" def="после/затем" class="na" href="#h_ལས">ལས</a>།</snt> <div class="cite">།<snt class="sent" id="s17"><a id="འཇིག་རྟེན" def="༼loka༽мирской" class="na" href="#h_འཇིག་རྟེན">འཇིག་རྟེན</a>་<a id="དོན" def="подлинный; польза; смысл" class="na" href="#h_དོན">དོན</a>་<a id="སྒྲུབ་ཚུལ" def="способ осуществления@" class="na" href="#h_སྒྲུབ་ཚུལ">སྒྲུབ་ཚུལ</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="མཐུ" def="сила" class="na" href="#h_མཐུ">མཐུ</a>་<a id="མེད་པ" def="без" class="na" href="#h_མེད་པ">མེད་པ</a><a id="འི" def="cc" class="cc" href="#h_འི">འི</a>།</snt> །<snt class="sent" id="s18"><a id="ཐེག་པ" def="колесница@" class="na" href="#h_ཐེག་པ">ཐེག་པ</a>་<a id="གཉིས་པོ" def="второй;оба@" class="na" href="#h_གཉིས་པོ">གཉིས་པོ</a>་<a id="གཏན" def="постоянно" class="na" href="#h_གཏན">གཏན</a>་<a id="དུ" def="cc" class="cc" href="#h_དུ">དུ</a>་<a id="སྤང" def="отбрасывать" class="na" href="#h_སྤང">སྤང</a>་<a id="བྱས" def="p.совершали@" class="na" href="#h_བྱས">བྱས</a>་<a id="ཤིང" def="деепр.нарече; и; но; потому; дерево*" class="na" href="#h_ཤིང">ཤིང</a>་།</snt> །<snt class="sent" id="s19"><a id="ཐུབ" def="мочь" class="na" href="#h_ཐུབ">ཐུབ</a>་<a id="རྒྱལ" def="Победоносный; царь*" class="na" href="#h_རྒྱལ">རྒྱལ</a>་<a id="ཐེག་པ" def="колесница@" class="na" href="#h_ཐེག་པ">ཐེག་པ</a>་<a id="སྙིང" def="сердце*" class="na" href="#h_སྙིང">སྙིང</a>་<a id="རྗེས" def="после; imp.изменяться; temp.c.*" class="na" href="#h_རྗེས">རྗེས</a>་<a id="བསྟན་པ" def="наставление" class="na" href="#h_བསྟན་པ">བསྟན་པ</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>།</snt> །<snt class="sent" id="s20"><a id="གཞན་ཕན" def="польза других@" class="na" href="#h_གཞན་ཕན">གཞན་ཕན</a>་<a id="རོ" def="༼rasa༽вкус; труп; элексир*" class="na" href="#h_རོ">རོ</a>་<a id="གཅིག" def="один" class="na" href="#h_གཅིག">གཅིག</a>་<a id="རང་བཞིན" def="само-природа*" class="na" href="#h_རང་བཞིན">རང་བཞིན</a>་<a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་<a id="དག" def="pl.p.; все; чистый*" class="na" href="#h_དག">དག</a>་<a id="འཇུག" def="p.вступить;следовать@" class="na" href="#h_འཇུག">འཇུག</a></snt> །<snt class="sent" id="s21"><a id="ཅེས" def="q.m.*" class="na" href="#h_ཅེས">ཅེས</a>་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་།</snt> །<snt class="sent" id="s22"><a id="བདེ" def="благо" class="na" href="#h_བདེ">བདེ</a>་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་<a id="མི" def="человек; n.p.*" class="na" href="#h_མི">མི</a>་<a id="བདེ" def="благо" class="na" href="#h_བདེ">བདེ</a>་<a id="རྨི་ལམ" def="мечта" class="na" href="#h_རྨི་ལམ">རྨི་ལམ</a>་འདྲར་<a id="བགྲངས" def="считать;причислять@" class="na" href="#h_བགྲངས">བགྲངས</a>་<a id="ཤིང" def="деепр.нарече; и; но; потому; дерево*" class="na" href="#h_ཤིང">ཤིང</a>་།</snt> །<snt class="sent" id="s23"><a id="གཏི་མུག" def="༼moha༽невежество" class="na" href="#h_གཏི་མུག">གཏི་མུག</a>་<a id="སྐྱོན" def="вред; p.поместить*" class="na" href="#h_སྐྱོན">སྐྱོན</a>་<a id="གྱིས" def="cc" class="cc" href="#h_གྱིས">གྱིས</a>་<a id="དམའ་བ" def="низкий@" class="na" href="#h_དམའ་བ">དམའ་བ</a><a id="འི" def="cc" class="cc" href="#h_འི">འི</a>་<a id="འགྲོ" def="идти*" class="na" href="#h_འགྲོ">འགྲོ</a>་<a id="མཐོང" def="понимать; видеть*" class="na" href="#h_མཐོང">མཐོང</a>་<a id="ན" def="cc" class="cc" href="#h_ན">ན</a>།</snt> །<snt class="sent" id="s24"><a id="ལས" def="после/затем" class="na" href="#h_ལས">ལས</a>་<a id="ཀྱི" def="cc" class="cc" href="#h_ཀྱི">ཀྱི</a>་<a id="དམ་པ" def="истинный" class="na" href="#h_དམ་པ">དམ་པ</a>་<a id="གཞན་དོན" def="благо других*" class="na" href="#h_གཞན་དོན">གཞན་དོན</a>་<a id="དགའ་བོ" def="восторг;Nanda" class="na" href="#h_དགའ་བོ">དགའ་བོ</a><a id="ར" def="cc" class="cc" href="#h_ར">ར</a>་<a id="ཞིང" def="деепр.c.p.;поле;adj+~(и)*" class="na" href="#h_ཞིང">ཞིང</a>་།</snt> །<snt class="sent" id="s25"><a id="རང" def="собственный" class="na" href="#h_རང">རང</a>་<a id="གི" def="cc" class="cc" href="#h_གི">གི</a>་<a id="དོན" def="подлинный; польза; смысл" class="na" href="#h_དོན">དོན</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་ཀོ་<a id="ཅི་སྟེ" def="в случае/но если...?" class="na" href="#h_ཅི་སྟེ">ཅི་སྟེ</a>་<a id="བརྩོན" def="imp.стремится*" class="na" href="#h_བརྩོན">བརྩོན</a>།</snt></div> <br>
+།<snt class="sent" id="s26"><a id="ཞེས" def=".. - это.." class="na" href="#h_ཞེས">ཞེས</a>་<a id="གསུངས་པ" def="h.сказано@" class="na" href="#h_གསུངས་པ">གསུངས་པ</a>་<a id="ལྟར" def="ābha" class="na" href="#h_ལྟར">ལྟར</a>་<s def="¶" class="cc"><a id="རོ" def="༼rasa༽вкус; труп; элексир*" class="na" href="#h_རོ">རོ</a></s>།</snt><br>
+  །<snt class="sent" id="s27"><a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་<a id="ལྟར" def="ābha" class="na" href="#h_ལྟར">ལྟར</a>་<a id="རང་ཉིད" def="я сам@" class="na" href="#h_རང་ཉིད">རང་ཉིད</a>་<a id="སྲིད་པ" def="༼bhava༽становление (10-е звено взаимозависимости);существование*" class="na" href="#h_སྲིད་པ">སྲིད་པ</a><a id="འི" def="cc" class="cc" href="#h_འི">འི</a>་མཚོར་<a id="ལྷུང་བ" def="падать@" class="na" href="#h_ལྷུང་བ">ལྷུང་བ</a>་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་<a id="འདྲ" def="подобно*" class="na" href="#h_འདྲ">འདྲ</a>་<a id="བར" def="d.l.; туда" class="na" href="#h_བར">བར</a>་<a id="འགྲོ་བ" def="существа" class="na" href="#h_འགྲོ་བ">འགྲོ་བ</a>་<a id="རྣམས" def="все*" class="na" href="#h_རྣམས">རྣམས</a>་<a id="ཀྱང" def="и .. тоже" class="na" href="#h_ཀྱང">ཀྱང</a>་<a id="བླང་དོར" def="принятие и отвержение@" class="na" href="#h_བླང་དོར">བླང་དོར</a>་<a id="འབྱེད" def="различать; открывать*" class="na" href="#h_འབྱེད">འབྱེད</a>་<a id="པ" def="a.p.*" class="na" href="#h_པ">པ</a><a id="འི" def="cc" class="cc" href="#h_འི">འི</a>་<a id="ཤེས་རབ" def="༼prajñā༽высшее знание*" class="na" href="#h_ཤེས་རབ">ཤེས་རབ</a>་<a id="ཀྱི" def="cc" class="cc" href="#h_ཀྱི">ཀྱི</a>་<a id="མིག" def="༼cakṣuḥ༽глаз*" class="na" href="#h_མིག">མིག</a>་ཟུམ་<a id="པས" def="i.c; q.p.*" class="na" href="#h_པས">པས</a>་<a id="ཉམ་ང་བ" def="испуганный@" class="na" href="#h_ཉམ་ང་བ">ཉམ་ང་བ</a>་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་<a id="བྲལ་བ" def="p.f.отделить@" class="na" href="#h_བྲལ་བ">བྲལ་བ</a><a id="འི" def="cc" class="cc" href="#h_འི">འི</a>་<a id="ཕྱོགས" def="направление; обусловленность*" class="na" href="#h_ཕྱོགས">ཕྱོགས</a>་<a id="སུ" def="кто" class="na" href="#h_སུ">སུ</a>་<a id="བགྲོད" def="достичь*" class="na" href="#h_བགྲོད">བགྲོད</a>་<a id="མི" def="человек; n.p.*" class="na" href="#h_མི">མི</a>་<a id="ནུས་པ" def="способность" class="na" href="#h_ནུས་པ">ནུས་པ</a><a id="ར" def="cc" class="cc" href="#h_ར">ར</a>་གོམ་<a id="འགྲོས" def="походка@" class="na" href="#h_འགྲོས">འགྲོས</a>་འཁྱོར་བ་<a id="མཐོང" def="понимать; видеть*" class="na" href="#h_མཐོང">མཐོང</a>་<a id="ན" def="cc" class="cc" href="#h_ན">ན</a>།</snt> <snt class="sent" id="s28"><a id="རྒྱལ་བ" def="Победоносный@" class="na" href="#h_རྒྱལ་བ">རྒྱལ་བ</a><a id="འི" def="cc" class="cc" href="#h_འི">འི</a>་<a id="རིགས" def="виды; семейство*" class="na" href="#h_རིགས">རིགས</a>་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་<a id="ལྡན་པ" def="иметь@" class="na" href="#h_ལྡན་པ">ལྡན་པ</a>་<a id="རྣམས" def="все*" class="na" href="#h_རྣམས">རྣམས</a>་<a id="གཞན" def="другой; другие*" class="na" href="#h_གཞན">གཞན</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="བརྩེ་བ" def="h.любящая доброта" class="na" href="#h_བརྩེ་བ">བརྩེ་བ</a>་<a id="མེད་པ" def="без" class="na" href="#h_མེད་པ">མེད་པ</a>་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་<a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་<a id="དག" def="pl.p.; все; чистый*" class="na" href="#h_དག">དག</a>་<a id="གི" def="cc" class="cc" href="#h_གི">གི</a>་<a id="དོན" def="подлинный; польза; смысл" class="na" href="#h_དོན">དོན</a>་<a id="དུ" def="cc" class="cc" href="#h_དུ">དུ</a>་<a id="མི" def="человек; n.p.*" class="na" href="#h_མི">མི</a>་<a id="བརྩོན་པ" def="старание;стремление@" class="na" href="#h_བརྩོན་པ">བརྩོན་པ</a>་<a id="ནི" def="..-" class="na" href="#h_ནི">ནི</a>་<a id="མི" def="человек; n.p.*" class="na" href="#h_མི">མི</a>་<a id="རིགས" def="виды; семейство*" class="na" href="#h_རིགས">རིགས</a>་<a id="ཏེ" def="тогда; когда*" class="na" href="#h_ཏེ">ཏེ</a>།</snt> 
+<br><snt class="cite_src">།<a id="དེ་ཉིད" def="༼tattva༽таковость*" class="na" href="#h_དེ་ཉིད">དེ་ཉིད</a>་<a id="ལས" def="после/затем" class="na" href="#h_ལས">ལས</a>།</snt> <div class="cite">།<snt class="sent" id="s29"><a id="ཤེས་རབ" def="༼prajñā༽высшее знание*" class="na" href="#h_ཤེས་རབ">ཤེས་རབ</a>་<a id="མིག" def="༼cakṣuḥ༽глаз*" class="na" href="#h_མིག">མིག</a>་ཟུམ་<a id="འགྲོས" def="походка@" class="na" href="#h_འགྲོས">འགྲོས</a>་འཁྱོར་<a id="གྱུར་པ" def="༼bhuta༽pf.ставший;достигший(качества)*" class="na" href="#h_གྱུར་པ">གྱུར་པ</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>།</snt> །<snt class="sent" id="s30"><a id="འཇིག་རྟེན" def="༼loka༽мирской" class="na" href="#h_འཇིག་རྟེན">འཇིག་རྟེན</a>་<a id="དོན" def="подлинный; польза; смысл" class="na" href="#h_དོན">དོན</a>་<a id="སྒྲུབ" def="достижение*" class="na" href="#h_སྒྲུབ">སྒྲུབ</a>་<a id="རྒྱལ་བ" def="Победоносный@" class="na" href="#h_རྒྱལ་བ">རྒྱལ་བ</a><a id="འི" def="cc" class="cc" href="#h_འི">འི</a>་<a id="རྒྱལ་རིགས" def="царедворцы༼Ksatriya༽@" class="na" href="#h_རྒྱལ་རིགས">རྒྱལ་རིགས</a>་<a id="ན" def="cc" class="cc" href="#h_ན">ན</a>།</snt> །<snt class="sent" id="s31"><a id="སྙིང་རྗེ" def="༼karuṇā༽любящая доброта" class="na" href="#h_སྙིང་རྗེ">སྙིང་རྗེ</a>་<a id="མི" def="человек; n.p.*" class="na" href="#h_མི">མི</a>་<a id="བསྐྱེད" def="p.рождать*" class="na" href="#h_བསྐྱེད">བསྐྱེད</a>་<a id="སྐྱེས་བུ" def="личность" class="na" href="#h_སྐྱེས་བུ">སྐྱེས་བུ</a>་<a id="གང" def="как" class="na" href="#h_གང">གང</a>་<a id="ཞིག" def="один" class="na" href="#h_ཞིག">ཞིག</a>་<a id="ཡོད" def="быть*" class="na" href="#h_ཡོད">ཡོད</a>།</snt> །<snt class="sent" id="s32"><a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་<a id="དག" def="pl.p.; все; чистый*" class="na" href="#h_དག">དག</a>་<a id="རྨོངས" def="заблуждение@" class="na" href="#h_རྨོངས">རྨོངས</a>་<a id="བསལ" def="очистить*" class="na" href="#h_བསལ">བསལ</a>་<a id="བརྩོན་འགྲུས" def="༼viryam༽усердие" class="na" href="#h_བརྩོན་འགྲུས">བརྩོན་འགྲུས</a>་<a id="སུ" def="кто" class="na" href="#h_སུ">སུ</a>་<a id="མི" def="человек; n.p.*" class="na" href="#h_མི">མི</a>་<a id="རྩོམ" def="составить@" class="na" href="#h_རྩོམ">རྩོམ</a>།</snt></div> <br>
+།<snt class="sent" id="s33"><a id="ཞེས" def=".. - это.." class="na" href="#h_ཞེས">ཞེས</a>་<s def="¶" class="cc"><a id="སོ" def="зубы; phr.c.*" class="na" href="#h_སོ">སོ</a></s>།</snt><br>
+  །<snt class="sent" id="s34"><a id="འདི" def="это" class="na" href="#h_འདི">འདི</a>་<a id="ན" def="cc" class="cc" href="#h_ན">ན</a>་<a id="སྐྱེས་བུ" def="личность" class="na" href="#h_སྐྱེས་བུ">སྐྱེས་བུ</a>་<a id="རྣམས" def="все*" class="na" href="#h_རྣམས">རྣམས</a>་<a id="ཀྱི" def="cc" class="cc" href="#h_ཀྱི">ཀྱི</a>་<a id="བདེ་བ" def="༼sukha༽благо" class="na" href="#h_བདེ་བ">བདེ་བ</a>་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་བརྗིད་<a id="བག" def="мука" class="na" href="#h_བག">བག</a>་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་<a id="སྐྱེས་བུ" def="личность" class="na" href="#h_སྐྱེས་བུ">སྐྱེས་བུ</a><a id="འི" def="cc" class="cc" href="#h_འི">འི</a>་<a id="རྩལ" def="энергия" class="na" href="#h_རྩལ">རྩལ</a>་<a id="ནི" def="..-" class="na" href="#h_ནི">ནི</a>་<a id="གཞན" def="другой; другие*" class="na" href="#h_གཞན">གཞན</a>་<a id="གྱི" def="cc" class="cc" href="#h_གྱི">གྱི</a>་<a id="དོན" def="подлинный; польза; смысл" class="na" href="#h_དོན">དོན</a>་<a id="ཁུར" def="груз" class="na" href="#h_ཁུར">ཁུར</a>་<a id="དུ" def="cc" class="cc" href="#h_དུ">དུ</a>་<a id="འཁྱེར་བ" def="нести" class="na" href="#h_འཁྱེར་བ">འཁྱེར་བ</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="བྱ" def="птица; f.будет; должно; осуществлять*" class="na" href="#h_བྱ">བྱ</a>་<a id="བར" def="d.l.; туда" class="na" href="#h_བར">བར</a>་<a id="རིགས" def="виды; семейство*" class="na" href="#h_རིགས">རིགས</a>་<a id="ཏེ" def="тогда; когда*" class="na" href="#h_ཏེ">ཏེ</a>།</snt> <snt class="sent" id="s35"><a id="རང" def="собственный" class="na" href="#h_རང">རང</a>་<a id="གི" def="cc" class="cc" href="#h_གི">གི</a>་<a id="དོན" def="подлинный; польза; смысл" class="na" href="#h_དོན">དོན</a>་<a id="ཙམ" def="только" class="na" href="#h_ཙམ">ཙམ</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="དམིགས་པ" def="༼ālambana༽рассмотрение" class="na" href="#h_དམིགས་པ">དམིགས་པ</a>་<a id="ནི" def="..-" class="na" href="#h_ནི">ནི</a>་<a id="དུད་འགྲོ" def="зверь" class="na" href="#h_དུད་འགྲོ">དུད་འགྲོ</a>་<a id="རྣམས" def="все*" class="na" href="#h_རྣམས">རྣམས</a>་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་<a id="ཡང" def="уступ.ч.; как; также; хотя" class="na" href="#h_ཡང">ཡང</a>་<a id="ཐུན་མོང" def="обычный@" class="na" href="#h_ཐུན་མོང">ཐུན་མོང</a>་བ་<a id="ཡིན་པ" def="существование*" class="na" href="#h_ཡིན་པ">ཡིན་པ</a><a id="འི" def="cc" class="cc" href="#h_འི">འི</a>་<a id="ཕྱིར" def="для" class="na" href="#h_ཕྱིར">ཕྱིར</a>་<s def="¶" class="cc"><a id="རོ" def="༼rasa༽вкус; труп; элексир*" class="na" href="#h_རོ">རོ</a></s>།</snt> <br><br>
 
-			<snt class="sent" id="s36">དེའི་ཕྱིར་<a id="ཆེན" def="big size" class="na" href="#h_ཆེན">ཆེན</a>་པོ་རྣམས་<a
-					id="ཀྱི" def="cc" class="cc" href="#h_ཀྱི">ཀྱི</a>་ངང་ཚུལ་<a id="ནི" def="..-" class="na"
-					href="#h_ནི">ནི</a>་གཞན་<a id="གྱི" def="cc" class="cc" href="#h_གྱི">གྱི</a>་<a id="ཕན"
-					def="help; benefit; be of use" class="na" href="#h_ཕན">ཕན</a>་བདེ་<a id="ལ" def="cc" class="cc"
-					href="#h_ལ">ལ</a>་མཐའ་<a id="གཅིག" def="same, one; oneness; distinguished by; unitary" class="na"
-					href="#h_གཅིག">གཅིག</a>་<a id="ཏུ" def="cc" class="cc" href="#h_ཏུ">ཏུ</a>་<a id="གཞོལ"
-					def="to flow {T}" class="na" href="#h_གཞོལ">གཞོལ</a>་བ་ཡིན་<a id="ཏེ" def="cc" class="cc"
-					href="#h_ཏེ">ཏེ</a>།</snt>
-			<br>
-			<snt class="cite_src">།<a id="སློབ" def="to learn; teach; train in" class="na" href="#h_སློབ">སློབ</a>་མ་<a
-					id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་སྤྲིངས་པ་<a id="ལས" def="после/затем" class="na"
-					href="#h_ལས">ལས</a>།</snt>
-			<div class="cite">།<snt class="sent" id="s37">ཤིན་<a id="ཏུ" def="cc" class="cc" href="#h_ཏུ">ཏུ</a>་<a
-						id="རྙེད" def="vb, find; gain; discover; noun: goods; property; profit" class="na"
-						href="#h_རྙེད">རྙེད</a>་སླའི་རྩྭ་ཁམ་འགའ་<a id="ལྟ"
-						def="vb, view; look (pres); see; read noun: view; false view" class="na"
-						href="#h_ལྟ">ལྟ</a>་ཕྱུགས་<a id="ཀྱང" def="и .. тоже" class="na" href="#h_ཀྱང">ཀྱང</a>་རང་ཉིད་<a
-						id="ཟ" def="food; to eat (present nh.)" class="na" href="#h_ཟ">ཟ</a>།</snt> །<snt class="sent"
-					id="s38">ཤིན་<a id="ཏུ" def="cc" class="cc" href="#h_ཏུ">ཏུ</a>་<a id="སྐོམ" def="to feel thirsty"
-						class="na" href="#h_སྐོམ">སྐོམ</a>་<a id="པས" def="и так" class="na" href="#h_པས">པས</a>་<a
-						id="གདུངས" def="torment; be tormented; be scorched; desire; long for" class="na"
-						href="#h_གདུངས">གདུངས</a>་པའང་ཆུ་<a id="ཞིག" def="побуждение" class="na"
-						href="#h_ཞིག">ཞིག</a>་<a id="རྙེད" def="vb, find; gain; discover; noun: goods; property; profit"
-						class="na" href="#h_རྙེད">རྙེད</a>་<a id="ན" def="cc" class="cc" href="#h_ན">ན</a>་<a id="དགའ"
-						def="joy; happiness; liking" class="na" href="#h_དགའ">དགའ</a>་མགུར་འཐུང༌།</snt> །<snt
-					class="sent" id="s39"><a id="འདི" def="это" class="na" href="#h_འདི">འདི</a>་<a id="ན" def="cc"
-						class="cc" href="#h_ན">ན</a>་<a id="སྐྱེས" def="be born" class="na"
-						href="#h_སྐྱེས">སྐྱེས</a>་བུ་གཞན་<a id="དོན" def="nn" class="na" href="#h_དོན">དོན</a>་<a
-						id="བྱེད" def="do; act; perform; does; refer (to), to happen (pres.t.)" class="na"
-						href="#h_བྱེད">བྱེད</a>་པར་<a id="བརྩོན"
-						def="vb, to endeavor; make effort; strive; exert oneself; noun: effort; endeavor; exertion"
-						class="na" href="#h_བརྩོན">བརྩོན</a>་པ་<a id="གང" def="чего/какой бы" class="na"
-						href="#h_གང">གང</a>་ཡིན་པ།</snt> །<snt class="sent" id="s40"><a id="དེ" def="cc" class="cc"
-						href="#h_དེ">དེ</a>་འདིའི་<a id="བརྗིད" def="shine; glitter" class="na"
-						href="#h_བརྗིད">བརྗིད</a>་བག་ཡིན་<a id="ཏེ" def="cc" class="cc" href="#h_ཏེ">ཏེ</a>་<a id="དེ"
-						def="cc" class="cc" href="#h_དེ">དེ</a>་བདེ་<a id="སྐྱེས" def="be born" class="na"
-						href="#h_སྐྱེས">སྐྱེས</a>་བུའི་<a id="རྩལ" def="capacity; manifest capacity; dexterity; power"
-						class="na" href="#h_རྩལ">རྩལ</a>་<a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་<a id="འཕགས"
-						def="Superior; noble" class="na" href="#h_འཕགས">འཕགས</a>།</snt> །<snt class="sent" id="s41">
-					ཉི་མ་རླབས་<a id="ཆེན" def="big size" class="na" href="#h_ཆེན">ཆེན</a>་རྟ་ཞོན་རྒྱུ་བ་<a id="སྣང"
-						def="to appear; perceive; light; illuminate; appearance" class="na" href="#h_སྣང">སྣང</a>་<a
-						id="བྱེད" def="do; act; perform; does; refer (to), to happen (pres.t.)" class="na"
-						href="#h_བྱེད">བྱེད</a>་<a id="གང" def="чего/какой бы" class="na" href="#h_གང">གང</a>་ཡིན་དང༌།
-				</snt> །<snt class="sent" id="s42"><a id="ཁུར" def="burden; load" class="na" href="#h_ཁུར">ཁུར</a>་<a
-						id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་མི་རྩེག་ས་<a id="ཡིས" def="cc" class="cc"
-						href="#h_ཡིས">ཡིས</a>་<a id="འཇིག" def="to disintegrate; disintegrate; destroy" class="na"
-						href="#h_འཇིག">འཇིག</a>་རྟེན་<a id="འདེགས" def="support" class="na"
-						href="#h_འདེགས">འདེགས</a>་པ་<a id="གང" def="чего/какой бы" class="na" href="#h_གང">གང</a>་ཡིན་<a
-						id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>།</snt> །<snt class="sent" id="s43">རང་<a
-						id="དོན" def="nn" class="na" href="#h_དོན">དོན</a>་འགའ་<a id="མེད" def="после་ отрицаемого"
-						class="na" href="#h_མེད">མེད</a>་<a id="ཆེན" def="big size" class="na"
-						href="#h_ཆེན">ཆེན</a>་པོ་རྣམས་<a id="ཀྱི" def="cc" class="cc" href="#h_ཀྱི">ཀྱི</a>་རང་<a
-						id="བཞིན" def="-ing" class="na" href="#h_བཞིན">བཞིན</a>་<a id="དེ་འདྲ"
-						def="like that, so, such, thus" class="na" href="#h_དེ་འདྲ">དེ་འདྲ</a>་<a id="སྟེ" def="cc"
-						class="cc" href="#h_སྟེ">སྟེ</a>།</snt> །<snt class="sent" id="s44"><a id="དེ" def="cc"
-						class="cc" href="#h_དེ">དེ</a>་<a id="དག" def="1) to purify; to clean; 2) plural marker"
-						class="na" href="#h_དག">དག</a>་<a id="འཇིག" def="to disintegrate; disintegrate; destroy"
-						class="na" href="#h_འཇིག">འཇིག</a>་རྟེན་<a id="ཕན" def="help; benefit; be of use" class="na"
-						href="#h_ཕན">ཕན</a>་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་བདེ་བའི་རོ་<a id="ལ"
-						def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="གཅིག"
-						def="same, one; oneness; distinguished by; unitary" class="na" href="#h_གཅིག">གཅིག</a>་<a
-						id="ཏུ" def="cc" class="cc" href="#h_ཏུ">ཏུ</a>་<a id="གཞོལ" def="to flow {T}" class="na"
-						href="#h_གཞོལ">གཞོལ</a>།</snt>
-			</div> <br>
-			།<snt class="sent" id="s45"><a id="ཞེས" def=".. - это.." class="na" href="#h_ཞེས">ཞེས</a>་སོ།</snt><br>
-			།<snt class="sent" id="s46"><a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་<a id="ལྟར" def="ābha"
-					class="na" href="#h_ལྟར">ལྟར</a>་<a id="འགྲོ"
-					def="vb, go; (pres) become; serve; act; noun: transmigrator; goer" class="na"
-					href="#h_འགྲོ">འགྲོ</a>་བ་<a id="སྡུག" def="dear; kind; beloved" class="na"
-					href="#h_སྡུག">སྡུག</a>་བསྔལ་<a id="གྱིས" def="cc" class="cc" href="#h_གྱིས">གྱིས</a>་ཀུན་<a id="ཏུ"
-					def="cc" class="cc" href="#h_ཏུ">ཏུ</a>་<a id="གདུངས"
-					def="torment; be tormented; be scorched; desire; long for" class="na"
-					href="#h_གདུངས">གདུངས</a>་པར་<a id="མཐོང" def="to see; to perceive (present/passive)" class="na"
-					href="#h_མཐོང">མཐོང</a>་<a id="ནས" def="после" class="na" href="#h_ནས">ནས</a>་<a id="དེ" def="cc"
-					class="cc" href="#h_དེ">དེ</a>་<a id="དག" def="1) to purify; to clean; 2) plural marker" class="na"
-					href="#h_དག">དག</a>་<a id="གི" def="cc" class="cc" href="#h_གི">གི</a>་<a id="དོན" def="nn"
-					class="na" href="#h_དོན">དོན</a>་<a id="དུ" def="cc" class="cc" href="#h_དུ">དུ</a>་བྲེལ་བ་<a id="ལ"
-					def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="སྐྱེས" def="be born" class="na"
-					href="#h_སྐྱེས">སྐྱེས</a>་བུ་<a id="ཞེས" def=".. - это.." class="na" href="#h_ཞེས">ཞེས</a>་<a
-					id="བྱ" def="1. activity; object; deed; do; action to do; make; perform 2. bird (pas.t.)" class="na"
-					href="#h_བྱ">བྱ</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="མཁས"
-					def="wise; skilled; be skillful; scholar" class="na" href="#h_མཁས">མཁས</a>་པ་<a id="ཞེས"
-					def=".. - это.." class="na" href="#h_ཞེས">ཞེས</a>་<a id="ཀྱང" def="и .. тоже" class="na"
-					href="#h_ཀྱང">ཀྱང</a>་<a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་<a id="ལ" def="cc"
-					class="cc" href="#h_ལ">ལ</a>་<a id="བྱ"
-					def="1. activity; object; deed; do; action to do; make; perform 2. bird (pas.t.)" class="na"
-					href="#h_བྱ">བྱ</a>་<a id="སྟེ" def="cc" class="cc" href="#h_སྟེ">སྟེ</a>།</snt>
-		</section>
+ <snt class="sent" id="s36"><a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a><a id="འི" def="cc" class="cc" href="#h_འི">འི</a>་<a id="ཕྱིར" def="для" class="na" href="#h_ཕྱིར">ཕྱིར</a>་<a id="ཆེན་པོ" def="великий༼mahatā༽@" class="na" href="#h_ཆེན་པོ">ཆེན་པོ</a>་<a id="རྣམས" def="все*" class="na" href="#h_རྣམས">རྣམས</a>་<a id="ཀྱི" def="cc" class="cc" href="#h_ཀྱི">ཀྱི</a>་<a id="ངང་ཚུལ" def="характер" class="na" href="#h_ངང་ཚུལ">ངང་ཚུལ</a>་<a id="ནི" def="..-" class="na" href="#h_ནི">ནི</a>་<a id="གཞན" def="другой; другие*" class="na" href="#h_གཞན">གཞན</a>་<a id="གྱི" def="cc" class="cc" href="#h_གྱི">གྱི</a>་<a id="ཕན་བདེ" def="счастье и польза@" class="na" href="#h_ཕན་བདེ">ཕན་བདེ</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="མཐའ" def="край" class="na" href="#h_མཐའ">མཐའ</a>་<a id="གཅིག" def="один" class="na" href="#h_གཅིག">གཅིག</a>་<a id="ཏུ" def="cc" class="cc" href="#h_ཏུ">ཏུ</a>་<a id="གཞོལ་བ" def="старание" class="na" href="#h_གཞོལ་བ">གཞོལ་བ</a>་<a id="ཡིན" def="есть" class="na" href="#h_ཡིན">ཡིན</a>་<a id="ཏེ" def="тогда; когда*" class="na" href="#h_ཏེ">ཏེ</a>།</snt> 
+<br><snt class="cite_src">།<a id="སློབ་མ" def="ученики@" class="na" href="#h_སློབ་མ">སློབ་མ</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་སྤྲིངས་<a id="པ" def="a.p.*" class="na" href="#h_པ">པ</a>་<a id="ལས" def="после/затем" class="na" href="#h_ལས">ལས</a>།</snt> <div class="cite">།<snt class="sent" id="s37">ཤིན་<a id="ཏུ" def="cc" class="cc" href="#h_ཏུ">ཏུ</a>་<a id="རྙེད" def="найти; выгода" class="na" href="#h_རྙེད">རྙེད</a>་<a id="སླ" def="легкий@" class="na" href="#h_སླ">སླ</a><a id="འི" def="cc" class="cc" href="#h_འི">འི</a>་<a id="རྩྭ" def="трава@" class="na" href="#h_རྩྭ">རྩྭ</a>་<a id="ཁམ" def="кусок@" class="na" href="#h_ཁམ">ཁམ</a>་<a id="འགའ" def="нибудь еще" class="na" href="#h_འགའ">འགའ</a>་<a id="ལྟ" def="смотреть*" class="na" href="#h_ལྟ">ལྟ</a>་<a id="ཕྱུགས" def="рогатый скот@" class="na" href="#h_ཕྱུགས">ཕྱུགས</a>་<a id="ཀྱང" def="и .. тоже" class="na" href="#h_ཀྱང">ཀྱང</a>་<a id="རང་ཉིད" def="я сам@" class="na" href="#h_རང་ཉིད">རང་ཉིད</a>་<a id="ཟ" def="есть" class="na" href="#h_ཟ">ཟ</a>།</snt> །<snt class="sent" id="s38">ཤིན་<a id="ཏུ" def="cc" class="cc" href="#h_ཏུ">ཏུ</a>་<a id="སྐོམ" def="жажда*" class="na" href="#h_སྐོམ">སྐོམ</a>་<a id="པས" def="i.c; q.p.*" class="na" href="#h_པས">པས</a>་<a id="གདུངས་པ" def="страдающий@" class="na" href="#h_གདུངས་པ">གདུངས་པ</a><a id="འང" def="уступ.ч.@" class="na" href="#h_འང">འང</a>་<a id="ཆུ" def="вода*" class="na" href="#h_ཆུ">ཆུ</a>་<a id="ཞིག" def="один" class="na" href="#h_ཞིག">ཞིག</a>་<a id="རྙེད" def="найти; выгода" class="na" href="#h_རྙེད">རྙེད</a>་<a id="ན" def="cc" class="cc" href="#h_ན">ན</a>་<a id="དགའ" def="любить*" class="na" href="#h_དགའ">དགའ</a>་<a id="མགུར" def="гимн;голосовые связки@" class="na" href="#h_མགུར">མགུར</a>་<a id="འཐུང" def="пить*" class="na" href="#h_འཐུང">འཐུང</a>་།</snt> །<snt class="sent" id="s39"><a id="འདི" def="это" class="na" href="#h_འདི">འདི</a>་<a id="ན" def="cc" class="cc" href="#h_ན">ན</a>་<a id="སྐྱེས་བུ" def="личность" class="na" href="#h_སྐྱེས་བུ">སྐྱེས་བུ</a>་<a id="གཞན་དོན" def="благо других*" class="na" href="#h_གཞན་དོན">གཞན་དོན</a>་<a id="བྱེད་པ" def="совершающий*" class="na" href="#h_བྱེད་པ">བྱེད་པ</a><a id="ར" def="cc" class="cc" href="#h_ར">ར</a>་<a id="བརྩོན་པ" def="старание;стремление@" class="na" href="#h_བརྩོན་པ">བརྩོན་པ</a>་<a id="གང" def="как" class="na" href="#h_གང">གང</a>་<a id="ཡིན་པ" def="существование*" class="na" href="#h_ཡིན་པ">ཡིན་པ</a>།</snt> །<snt class="sent" id="s40"><a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་<a id="འདི" def="это" class="na" href="#h_འདི">འདི</a><a id="འི" def="cc" class="cc" href="#h_འི">འི</a>་བརྗིད་<a id="བག" def="мука" class="na" href="#h_བག">བག</a>་<a id="ཡིན" def="есть" class="na" href="#h_ཡིན">ཡིན</a>་<a id="ཏེ" def="тогда; когда*" class="na" href="#h_ཏེ">ཏེ</a>་<a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་<a id="བདེ" def="благо" class="na" href="#h_བདེ">བདེ</a>་<a id="སྐྱེས་བུ" def="личность" class="na" href="#h_སྐྱེས་བུ">སྐྱེས་བུ</a><a id="འི" def="cc" class="cc" href="#h_འི">འི</a>་<a id="རྩལ" def="энергия" class="na" href="#h_རྩལ">རྩལ</a>་<a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་<a id="འཕགས" def="благородный@" class="na" href="#h_འཕགས">འཕགས</a>།</snt> །<snt class="sent" id="s41"><a id="ཉི་མ" def="солнце;день@" class="na" href="#h_ཉི་མ">ཉི་མ</a>་<a id="རླབས་ཆེན" def="великолепный@" class="na" href="#h_རླབས་ཆེན">རླབས་ཆེན</a>་<a id="རྟ" def="лошадь*" class="na" href="#h_རྟ">རྟ</a>་<a id="ཞོན" def="ехать верхом*" class="na" href="#h_ཞོན">ཞོན</a>་<a id="རྒྱུ་བ" def="движение@" class="na" href="#h_རྒྱུ་བ">རྒྱུ་བ</a>་<a id="སྣང" def="проявления*" class="na" href="#h_སྣང">སྣང</a>་<a id="བྱེད" def="совершающее; p.совершали*" class="na" href="#h_བྱེད">བྱེད</a>་<a id="གང" def="как" class="na" href="#h_གང">གང</a>་<a id="ཡིན" def="есть" class="na" href="#h_ཡིན">ཡིན</a>་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་།</snt> །<snt class="sent" id="s42"><a id="ཁུར" def="груз" class="na" href="#h_ཁུར">ཁུར</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="མི" def="человек; n.p.*" class="na" href="#h_མི">མི</a>་<a id="རྩེག" def="складывать;думать о;торговаться*" class="na" href="#h_རྩེག">རྩེག</a>་<a id="ས" def="земля༼paṭhavī༽; ༼bhūmi༽*" class="na" href="#h_ས">ས</a>་<a id="ཡིས" def="посредством*" class="na" href="#h_ཡིས">ཡིས</a>་<a id="འཇིག་རྟེན" def="༼loka༽мирской" class="na" href="#h_འཇིག་རྟེན">འཇིག་རྟེན</a>་<a id="འདེགས་པ" def="поднимать;взвешивать;идти@" class="na" href="#h_འདེགས་པ">འདེགས་པ</a>་<a id="གང" def="как" class="na" href="#h_གང">གང</a>་<a id="ཡིན" def="есть" class="na" href="#h_ཡིན">ཡིན</a>་<a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>།</snt> །<snt class="sent" id="s43"><a id="རང་དོན" def="собственное благо@" class="na" href="#h_རང་དོན">རང་དོན</a>་<a id="འགའ" def="нибудь еще" class="na" href="#h_འགའ">འགའ</a>་<a id="མེད" def="без*" class="na" href="#h_མེད">མེད</a>་<a id="ཆེན་པོ" def="великий༼mahatā༽@" class="na" href="#h_ཆེན་པོ">ཆེན་པོ</a>་<a id="རྣམས" def="все*" class="na" href="#h_རྣམས">རྣམས</a>་<a id="ཀྱི" def="cc" class="cc" href="#h_ཀྱི">ཀྱི</a>་<a id="རང་བཞིན" def="само-природа*" class="na" href="#h_རང་བཞིན">རང་བཞིན</a>་<a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་<a id="འདྲ" def="подобно*" class="na" href="#h_འདྲ">འདྲ</a>་<a id="སྟེ" def="cc" class="cc" href="#h_སྟེ">སྟེ</a>།</snt> །<snt class="sent" id="s44"><a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་<a id="དག" def="pl.p.; все; чистый*" class="na" href="#h_དག">དག</a>་<a id="འཇིག་རྟེན" def="༼loka༽мирской" class="na" href="#h_འཇིག་རྟེན">འཇིག་རྟེན</a>་<a id="ཕན" def="польза*" class="na" href="#h_ཕན">ཕན</a>་<a id="དང" def="cc" class="cc" href="#h_དང">དང</a>་<a id="བདེ་བ" def="༼sukha༽благо" class="na" href="#h_བདེ་བ">བདེ་བ</a><a id="འི" def="cc" class="cc" href="#h_འི">འི</a>་<a id="རོ" def="༼rasa༽вкус; труп; элексир*" class="na" href="#h_རོ">རོ</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="གཅིག" def="один" class="na" href="#h_གཅིག">གཅིག</a>་<a id="ཏུ" def="cc" class="cc" href="#h_ཏུ">ཏུ</a>་<a id="གཞོལ" def="поддерживает;прячется@" class="na" href="#h_གཞོལ">གཞོལ</a>།</snt></div> <br>
+།<snt class="sent" id="s45"><a id="ཞེས" def=".. - это.." class="na" href="#h_ཞེས">ཞེས</a>་<s def="¶" class="cc"><a id="སོ" def="зубы; phr.c.*" class="na" href="#h_སོ">སོ</a></s>།</snt><br>
+  །<snt class="sent" id="s46"><a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་<a id="ལྟར" def="ābha" class="na" href="#h_ལྟར">ལྟར</a>་<a id="འགྲོ་བ" def="существа" class="na" href="#h_འགྲོ་བ">འགྲོ་བ</a>་<a id="སྡུག་བསྔལ" def="༼duḥkha༽страдание" class="na" href="#h_སྡུག་བསྔལ">སྡུག་བསྔལ</a>་<a id="གྱིས" def="cc" class="cc" href="#h_གྱིས">གྱིས</a>་<a id="ཀུན་ཏུ" def="༼saṃ-༽все" class="na" href="#h_ཀུན་ཏུ">ཀུན་ཏུ</a>་<a id="གདུངས་པ" def="страдающий@" class="na" href="#h_གདུངས་པ">གདུངས་པ</a><a id="ར" def="cc" class="cc" href="#h_ར">ར</a>་<a id="མཐོང" def="понимать; видеть*" class="na" href="#h_མཐོང">མཐོང</a>་<a id="ནས" def="i.p.; d.l." class="na" href="#h_ནས">ནས</a>་<a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་<a id="དག" def="pl.p.; все; чистый*" class="na" href="#h_དག">དག</a>་<a id="གི" def="cc" class="cc" href="#h_གི">གི</a>་<a id="དོན" def="подлинный; польза; смысл" class="na" href="#h_དོན">དོན</a>་<a id="དུ" def="cc" class="cc" href="#h_དུ">དུ</a>་<a id="བྲེལ་བ" def="участвовать" class="na" href="#h_བྲེལ་བ">བྲེལ་བ</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="སྐྱེས་བུ" def="личность" class="na" href="#h_སྐྱེས་བུ">སྐྱེས་བུ</a>་<a id="ཞེས" def=".. - это.." class="na" href="#h_ཞེས">ཞེས</a>་<a id="བྱ" def="птица; f.будет; должно; осуществлять*" class="na" href="#h_བྱ">བྱ</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="མཁས་པ" def="༼paṇḍita༽ведающий*" class="na" href="#h_མཁས་པ">མཁས་པ</a>་<a id="ཞེས" def=".. - это.." class="na" href="#h_ཞེས">ཞེས</a>་<a id="ཀྱང" def="и .. тоже" class="na" href="#h_ཀྱང">ཀྱང</a>་<a id="དེ" def="cc" class="cc" href="#h_དེ">དེ</a>་<a id="ལ" def="cc" class="cc" href="#h_ལ">ལ</a>་<a id="བྱ" def="птица; f.будет; должно; осуществлять*" class="na" href="#h_བྱ">བྱ</a>་<a id="སྟེ" def="cc" class="cc" href="#h_སྟེ">སྟེ</a></snt> 
+</section>
 
 		<script src="_OFF_js_osbl\Id_coord.js"></script>
 
@@ -749,10 +442,30 @@
 		<!-Form-!>
 			<form name="Input_Tb_Str" style="position: relative;right: 0;top: 0;">
 				<input name="Tib_Strn" def="вставьте сюда тибетский текст и нажмите ОК" size='18'>
-				<input type="submit" value="OK" onclick="FN_Tb_Str()"><br>
-				<span class="crds"></span>
+				<input type="submit" value="OK" onclick="FN_Tb_Str()">
 				<br>
-				<a href="#SentenceModal">ОКНО ПРЕДЛОЖЕНИЯ (как пример) работает ПОКА ЧТО только для 1го предложения</a>
+				<span class="crds"></span> <br>
+				<a href="#Downl_Usr_New_Wrds" id="Dwn_Usr_New_Wrds">Download Users New Words</a><br>
+
+				<a href="#SentenceModal">ОКНО ПРЕДЛОЖЕНИЯ(пример)</a>
+
+
+				<script>
+					Dwn_Usr_New_Wrds.onclick = function (event) {
+						var list_new_words = document.getElementsByClassName('usr_wrd');
+						alert(list_new_words);
+						//$.ajax({
+						//	type: "POST",
+						//	contentType: "application/json; charset=utf-8",
+						//	data: {"key": key, "option":usr_wrd}
+						//	dataType: "json",
+						//	success: function (msg) {
+						//		alert("Success");
+						//	}
+						//});
+						//'<a href="data:text/plain;charset=utf-8,%EF%BB%BF' + encodeURIComponent(list_new_words) + '" download="text.txt">text.txt</a>';
+					}
+				</script>
 			</form>
 			<br>
 
@@ -767,900 +480,247 @@
 				<summary><b>Перевод найденного словосочетания:</b></summary>
 
 				<section id="Slovar" class="Dict">
-					<a href="#" id="h_སྐྱེས">
-						<div class="option" id="o1">be born<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">be produced<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o3">be engendered<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཆེན">
-						<div class="option" id="o1">big size<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">great<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ལམ">
-						<div class="option" id="o1">..или.<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">.?<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o3">.,<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">path/way/road<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o5">and/or<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_གྱི">
-						<div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">владение/принадлежность<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-						<div class="option" id="o3">соответствующее основе качество<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">место объекта<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o5">часть из/среди целого<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-					</a>
-					<a href="#" id="h_རིམ">
-						<div class="option" id="o1">nn<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">krama<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o3">ступени<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">этапы<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ལས">
-						<div class="option" id="o1">после/затем<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">из<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o3">деепричастие …ев/ув<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">среди различных<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o5">сравнит чем<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o6">action; deed; work; having (done something)<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཐེག">
-						<div class="option" id="o1">vehicle<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_འཇུག">
-						<div class="option" id="o1">enter; engage; apply; usher (into); engages<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_བསྐྱེད">
-						<div class="option" id="o1">generate; produce; engender<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_བཞུགས་སོ">
-						<div class="option" id="o1">так называется<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_སྨོན">
-						<div class="option" id="o1">wish; admire; pray; aspire<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_སྦྱང">
-						<div class="option" id="o1">to learn (present nh.), purify; wash; practice; train; clean;<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_དང">
-						<div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">собирание и разделение<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-						<div class="option" id="o3">по причине<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">..непосредственно после<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-						<div class="option" id="o5">наставление/указание<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-					</a>
-					<a href="#" id="h_རྒྱལ">
-						<div class="option" id="o1">conquest; victory<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཀྱི">
-						<div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">владение/принадлежность<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-						<div class="option" id="o3">соответствующее основе качество<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">место объекта<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o5">часть из/среди целого<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-					</a>
-					<a href="#" id="h_སྤྱོད">
-						<div class="option" id="o1">enjoy; make use of; practice; act out; perform; behavior; deeds;
-							performance<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ལ">
-						<div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">['по направлению/месту', 'отсутствие заявленной цели', 'adj+ly']<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o3">['Предоставление чего-либо', 'кому-либо', 'для', 'что-бы']<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">['взаиморасположение и местопребывание', 'без движения',
-							'относительно', 'касательно', 'в обстоятельствах', 'место', 'время', 'среди..', 'заголовки',
-							'идти']<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_བསླབ">
-						<div class="option" id="o1">to learn; teach; train in (present, past nh.)<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_བསྟན">
-						<div class="option" id="o1">to show (past/present/future honorific)<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ནས">
-						<div class="option" id="o1">после<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">затем<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o3">деепричастие …ев/ув<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">среди подобных<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o5">от .. и до..<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_བདུན">
-						<div class="option" id="o1">seven<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཞི">
-						<div class="option" id="o1">be peaceful; be calm; peace; pacification<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_བརྟེན">
-						<div class="option" id="o1">depend upon; rely; resort to; support<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ནི">
-						<div class="option" id="o1">..-<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">..касаемо<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_སློབ">
-						<div class="option" id="o1">to learn; teach; train in<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-					</a>
-					<a href="#" id="h_ངེས">
-						<div class="option" id="o1">ascertain; ascertainment; certain<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_རྗེ">
-						<div class="option" id="o1">master; lord; leaders<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-					</a>
-					<a href="#" id="h_དམ">
-						<div class="option" id="o1">..или..<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">..?<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o3">..,<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ལྡན">
-						<div class="option" id="o1">обладающий<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">наделенный<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_པས">
-						<div class="option" id="o1">и так<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">1.инструмент частица<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-						<div class="option" id="o3">2.(vb. +--) потому что 3.(vb. +--) вопрос 4.в соответствии с<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">поскольку<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o5">когда<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_འཚལ">
-						<div class="option" id="o1">seek; want; ask; beg; beseech; desire; ; to understand<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_དེ">
-						<div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">потому что<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o3">значит<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">.. это так<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o5">потому что..<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o6">.. - это ..<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o7">.. - то что..<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ལྟར">
-						<div class="option" id="o1">ābha<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">like; thus; in accordance with<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཉེས">
-						<div class="option" id="o1">bad; sin; evil; crime<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-					</a>
-					<a href="#" id="h_དམིགས">
-						<div class="option" id="o1">to observe{D2}; apprehend; be aware of; object of observation
-							(=dmigs pa)<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_སྣ་ཚོགས">
-						<div class="option" id="o1">varied, of different kinds, diversity<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_རིང">
-						<div class="option" id="o1">long time, tall, long, lengthwise<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_དུ">
-						<div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">['по направлению/месту', 'отсутствие заявленной цели', 'adj+ly']<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o3">['Предоставление чего-либо', 'кому-либо', 'для', 'что-бы']<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">['взаиморасположение и местопребывание', 'без движения',
-							'относительно', 'касательно', 'в обстоятельствах', 'место', 'время', 'среди..', 'заголовки']
-							<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_བསྒོམས">
-						<div class="option" id="o1">meditate; meditatively cultivate<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_འབར">
-						<div class="option" id="o1">burn; blaze up; blaze; catch fire; flaming; fire<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_མཐོང">
-						<div class="option" id="o1">to see; to perceive (present/passive)<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_སྟེ">
-						<div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">after--<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o3">having--<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">adverbal; потому что<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-						<div class="option" id="o5">значит<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o6">.. это так<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o7">потому что..<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o8">.. - это ..<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o9">.. - то что..<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཉོན">
-						<div class="option" id="o1">affliction<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_སྡུག">
-						<div class="option" id="o1">dear; kind; beloved<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཉེ">
-						<div class="option" id="o1">near; dear; intimate<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-					</a>
-					<a href="#" id="h_ཐོབ">
-						<div class="option" id="o1">attain; obtain; get, to win<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_འདོད">
-						<div class="option" id="o1">accept; assert; wish; desire; consider; to want (used with other
-							verbs)<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཀྱིས">
-						<div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">деятель<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o3">инструмент<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">c отношением<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o5">По причине<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o6">из-за<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o7">вследствии<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཏུ">
-						<div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">['по направлению/месту', 'отсутствие заявленной цели', 'adj+ly']<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o3">['Предоставление чего-либо', 'кому-либо', 'для', 'что-бы']<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">['взаиморасположение и местопребывание', 'без движения',
-							'относительно', 'касательно', 'в обстоятельствах', 'место', 'время', 'среди..', 'заголовки']
-							<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_གདུངས">
-						<div class="option" id="o1">torment; be tormented; be scorched; desire; long for<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཆེ">
-						<div class="option" id="o1">great, large, big, senior, elder<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_གསུམ">
-						<div class="option" id="o1">three<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_བསླབས">
-						<div class="option" id="o1">to learn; teach; train in (present, past nh.)<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ན">
-						<div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">['если']<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o3">['по направлению/месту', 'отсутствие заявленной цели', 'adj+ly']<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">['Предоставление чего-либо', 'кому-либо', 'для', 'что-бы']<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o5">['взаиморасположение и местопребывание', 'без движения',
-							'относительно', 'касательно', 'в обстоятельствах', 'место', 'время', 'среди..', 'заголовки']
-							<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o6">['be sick; be ill; in pain for the verb', 'na ba']<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_གྲོལ">
-						<div class="option" id="o1">released; loosened; freed<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-					</a>
-					<a href="#" id="h_འཐོབ">
-						<div class="option" id="o1">get; attain; will get; will attain [future of thob]<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཡང">
-						<div class="option" id="o1">['и .. тоже', 'действительно', 'слишком', 'хотя..', 'но..',
-							'даже..', 'тоже', 'также..']<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">['дополнения строф']<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-					</a>
-					<a href="#" id="h_མཐོ">
-						<div class="option" id="o1">high; elevated, prominent; superior<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ལྡོག">
-						<div class="option" id="o1">reverse; cease; turn around; isolate; eliminate; reversed<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཀྱང">
-						<div class="option" id="o1">и .. тоже<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">действительно<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o3">слишком<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">хотя..<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o5">но..<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o6">даже..<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o7">тоже<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o8">также..<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཟད">
-						<div class="option" id="o1">use up; exhaust; consume; subsume; extinction; removal; exhaustion;
-							used up; exhausted; extinct; extinguished; consumed; subsumed; ; [with negative:] not only;
-							inexhaustible<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_རེ">
-						<div class="option" id="o1">each; every; single; hope<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-					</a>
-					<a href="#" id="h_གི">
-						<div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">владение/принадлежность<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-						<div class="option" id="o3">соответствующее основе качество<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">место объекта<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o5">часть из/среди целого<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-					</a>
-					<a href="#" id="h_དོན">
-						<div class="option" id="o1">nn<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">Цель<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_རྫོགས">
-						<div class="option" id="o1">complete; end; finish; perfect; fulfill; terminate<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_སངས་རྒྱས">
-						<div class="option" id="o1">nn<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">Будда<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_བསྐུལ">
-						<div class="option" id="o1">rouse; arouse; entreat; urge on; incite; urge; exhort<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཏེ">
-						<div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">потому что<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o3">значит<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">.. это так<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o5">потому что..<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o6">.. - это ..<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o7">.. - то что..<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཕྱིན">
-						<div class="option" id="o1">went [past of 'gro, 'to go']<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_བསྡུས">
-						<div class="option" id="o1">collect; conclude; gather; include; abridge<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_འཇིག">
-						<div class="option" id="o1">to disintegrate; disintegrate; destroy<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_སྒྲུབ">
-						<div class="option" id="o1">achieve; attain; accomplish; prove; complete; practice<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_མེད">
-						<div class="option" id="o1">после་ отрицаемого<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">not exist; not be<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o3">not to have<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_གཉིས">
-						<div class="option" id="o1">two<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_སྤང">
-						<div class="option" id="o1">abandon; give up; eliminate; dispel; dispell; set aside<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_བྱས">
-						<div class="option" id="o1">vb, do; act; perform; fabricate; take ... as; noun: action;
-							activity; performance {C}produced; conditioned; compounded; effected (fut.t.)<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_རྗེས">
-						<div class="option" id="o1">after; subsequent to<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-					</a>
-					<a href="#" id="h_ཕན">
-						<div class="option" id="o1">help; benefit; be of use<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-					</a>
-					<a href="#" id="h_གཅིག">
-						<div class="option" id="o1">same, one; oneness; distinguished by; unitary<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_བཞིན">
-						<div class="option" id="o1">-ing<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_དག">
-						<div class="option" id="o1">1) to purify; to clean; 2) plural marker<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཅེས">
-						<div class="option" id="o1">.. - это..<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_བགྲངས">
-						<div class="option" id="o1">count; number; calculate; compute; reckon; enumerate; tally;
-							numerate<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_གྱིས">
-						<div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">деятель<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o3">инструмент<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">c отношением<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o5">По причине<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o6">из-за<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o7">вследствии<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o8">(semi-colon); (as imperative verb form) do<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_འགྲོ">
-						<div class="option" id="o1">vb, go; (pres) become; serve; act; noun: transmigrator; goer<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_དགའ">
-						<div class="option" id="o1">joy; happiness; liking<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-					</a>
-					<a href="#" id="h_བོར">
-						<div class="option" id="o1">to throw away; to give up or cast aside<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཅི་སྟེ">
-						<div class="option" id="o1">в случае/но если...?<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-					</a>
-					<a href="#" id="h_བརྩོན">
-						<div class="option" id="o1">vb, to endeavor; make effort; strive; exert oneself; noun: effort;
-							endeavor; exertion<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཞེས">
-						<div class="option" id="o1">.. - это..<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_གསུངས">
-						<div class="option" id="o1">said; mentioned; say; talk H<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_འདྲ">
-						<div class="option" id="o1">similar; same; similarity; likeness; like; similar; image<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_བླང">
-						<div class="option" id="o1">adopt; adopting; assume; take up; take; receive; assert; assertion
-							<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_དོར">
-						<div class="option" id="o1">discard; reject; cast out; forsake; cancel<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_འབྱེད">
-						<div class="option" id="o1">to separate; open; separate; differentiate{BJ}; opener{BR}<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཤེས་རབ">
-						<div class="option" id="o1">nn<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">prajñā<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o3">проникающее-различающее Знание<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ང">
-						<div class="option" id="o1">я<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">adj'ng + nga = comparative<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_བྲལ">
-						<div class="option" id="o1">separation; free from; lack; devoid; separate from<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_སུ">
-						<div class="option" id="o1">кто<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_བགྲོད">
-						<div class="option" id="o1">progress; get along; advance; proceed; travel; go; traverse; vehicle
-							<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ནུས">
-						<div class="option" id="o1">ability; able; potency; power; capacity<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_བརྩེ">
-						<div class="option" id="o1">noun: mercy; love; kindness; vb, feel mercy; pity; love<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_གྱུར">
-						<div class="option" id="o1">become; change; transform; arise; be<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_སྙིང་རྗེ">
-						<div class="option" id="o1">pretty, nice, beautiful, compassion, kindness, mercy, pity<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_གང">
-						<div class="option" id="o1">чего/какой бы<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">который<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o3">что<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">куда<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཞིག">
-						<div class="option" id="o1">побуждение<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">призыв - .!<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o3">кто-либо<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">destroy-past tns<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o5">второй слог<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཡོད">
-						<div class="option" id="o1">be<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">live<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o3">exist<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">have<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o5">there is<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o6">has<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o7">have<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o8">was<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o9">matter<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o10">who were present<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_རྨོངས">
-						<div class="option" id="o1">obscuration; delusion; confusion; ignorance; dullness<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_བསལ">
-						<div class="option" id="o1">clear away; remove; throw off; eradicate; separate<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_འགྲུས">
-						<div class="option" id="o1">zeal; enthusiasm; diligence<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_རྩོམ">
-						<div class="option" id="o1">begin; initiate; compose; write a book<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_འདི">
-						<div class="option" id="o1">это<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_བརྗིད">
-						<div class="option" id="o1">shine; glitter<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_རྩལ">
-						<div class="option" id="o1">capacity; manifest capacity; dexterity; power<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཁུར">
-						<div class="option" id="o1">burden; load<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_འཁྱེར">
-						<div class="option" id="o1">to carry; bear; bring<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-					</a>
-					<a href="#" id="h_བྱ">
-						<div class="option" id="o1">1. activity; object; deed; do; action to do; make; perform 2. bird
-							(pas.t.)<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཙམ">
-						<div class="option" id="o1">approximately, roughly<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-					</a>
-					<a href="#" id="h_གཞོལ">
-						<div class="option" id="o1">to flow {T}<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_རྙེད">
-						<div class="option" id="o1">vb, find; gain; discover; noun: goods; property; profit<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ལྟ">
-						<div class="option" id="o1">vb, view; look (pres); see; read noun: view; false view<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཟ">
-						<div class="option" id="o1">food; to eat (present nh.)<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_སྐོམ">
-						<div class="option" id="o1">to feel thirsty<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_བྱེད">
-						<div class="option" id="o1">do; act; perform; does; refer (to), to happen (pres.t.)<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_འཕགས">
-						<div class="option" id="o1">Superior; noble<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_སྣང">
-						<div class="option" id="o1">to appear; perceive; light; illuminate; appearance<div
-								class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_ཡིས">
-						<div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o2">деятель<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o3">инструмент<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o4">c отношением<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o5">По причине<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o6">из-за<div class="vote_line" style="width: 57%;"></div>
-						</div>
-						<div class="option" id="o7">вследствии<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_འདེགས">
-						<div class="option" id="o1">support<div class="vote_line" style="width: 57%;"></div>
-						</div>
-					</a>
-					<a href="#" id="h_དེ་འདྲ">
-						<div class="option" id="o1">like that, so, such, thus<div class="vote_line" style="width: 57%;">
-							</div>
-						</div>
-					</a>
-					<a href="#" id="h_མཁས">
-						<div class="option" id="o1">wise; skilled; be skillful; scholar<div class="vote_line"
-								style="width: 57%;"></div>
-						</div>
-					</a>
-				</section>
+<a href="#" id="h_སྐྱེས་བུ"><div class="option" id="o1">личность<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">человек*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཆེན་པོ"><div class="option" id="o1">великий༼mahatā༽@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འི"><div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">['владение/принадлежность', 'соответствующее основе качество', 'место объекта', 'часть из/среди целого']<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">['дополнения строф']<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ལམ"><div class="option" id="o1">путь*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_གྱི"><div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">владение/принадлежность<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">соответствующее основе качество<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o4">место объекта<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o5">часть из/среди целого<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རིམ་པ"><div class="option" id="o1">стадия@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ལས"><div class="option" id="o1">после/затем<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">из<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">деепричастие …ев/ув<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o4">среди различных<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o5">сравнит чем<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o6">action; deed; work; having (done something)<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཐེག་ཆེན"><div class="option" id="o1">Махаяна@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འཇུག་སྒོ"><div class="option" id="o1">входные врата@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སེམས་བསྐྱེད"><div class="option" id="o1">зарождение ума@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བཞུགས"><div class="option" id="o1">быть<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">находиться*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སོ"><div class="option" id="o1">зубы; phr.c.*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སྨོན་སེམས"><div class="option" id="o1">(зарождение) ума (и) устремления*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སྦྱང་བ"><div class="option" id="o1">чистить<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">очищать@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_དང"><div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">собирание и разделение<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">по причине<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o4">..непосредственно после<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o5">наставление/указание<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རྒྱལ་སྲས"><div class="option" id="o1">сын Победоносных@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཀྱི"><div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">владение/принадлежность<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">соответствующее основе качество<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o4">место объекта<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o5">часть из/среди целого<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སྤྱོད་པ"><div class="option" id="o1">༼caryā༽поведение<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">применять*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སྤྱི"><div class="option" id="o1">общий@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ལ"><div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">['по направлению/месту', 'отсутствие заявленной цели', 'adj+ly']<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">['Предоставление чего-либо', 'кому-либо', 'для', 'что-бы']<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o4">['взаиморасположение и местопребывание', 'без движения', 'относительно', 'касательно', 'в обстоятельствах', 'место', 'время', 'среди..', 'заголовки', 'идти']<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བསླབ་པ"><div class="option" id="o1">обучение@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཚུལ"><div class="option" id="o1">способ; манера; точка зрения; мораль; претендовать на<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">сказано о*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཁོ"><div class="option" id="o1">он*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ནར"><div class="option" id="o1">протяженность<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">продолжительность*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བསྟན་པ"><div class="option" id="o1">наставление<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">Учение;появление*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བྱང་ཆུབ་སེམས"><div class="option" id="o1">«bodhicitta»устремление Пробуждения@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཇོ་བོ"><div class="option" id="o1">Джово;Владыка@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ནས"><div class="option" id="o1">i.p.; d.l.<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">из<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">vb+~после<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o4">если;сов.вр.;ячмень*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བརྒྱུད་པ"><div class="option" id="o1">традиция;преемственность@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རྒྱུ་འབྲས"><div class="option" id="o1">причина и результат@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_མན་ངག"><div class="option" id="o1">упадеша;наставление*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བདུན"><div class="option" id="o1">семь*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཞི་བ"><div class="option" id="o1">мир<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">покой@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ལྷ"><div class="option" id="o1">༼deva༽божество*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_གཞུང"><div class="option" id="o1">основной<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">центральный*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བརྟེན"><div class="option" id="o1">p.опираться<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">зависеть от@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ནི"><div class="option" id="o1">..-<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">..касаемо<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སློབ"><div class="option" id="o1">учиться*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཞར"><div class="option" id="o1">вторичный<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">последующий@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_གོ་རིམ"><div class="option" id="o1">порядок@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ངེས་པ"><div class="option" id="o1">определенность<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">уверенность@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རྗེ་བཙུན"><div class="option" id="o1">Джецюн<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">преподобный*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_དམ་པ"><div class="option" id="o1">истинный<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">святой@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཐུགས་རྗེ་ཆེན་པོ"><div class="option" id="o1">великое милосердие@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ལྡན་པ"><div class="option" id="o1">иметь@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རྣམས"><div class="option" id="o1">все*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཞབས"><div class="option" id="o1">h.преподобный;стопы@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_པས"><div class="option" id="o1">i.c; q.p.*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཕྱག"><div class="option" id="o1">h.рука<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">длань;почитать*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འཚལ"><div class="option" id="o1">imp.<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">ps.; простираться<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">расстилать; понимание; просьба;*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ལོ"><div class="option" id="o1">год*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_དེ"><div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">потому что<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">значит<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o4">.. это так<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o5">потому что..<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o6">.. - это ..<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o7">.. - то что..<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ལྟར"><div class="option" id="o1">ābha<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">like; thus; in accordance with<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འཁོར་བ"><div class="option" id="o1">༼saṃsāra༽сансара;круговорот@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཉེས་དམིགས"><div class="option" id="o1">изъяны<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">недостатки@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སྒོ"><div class="option" id="o1">врата*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སྣ་ཚོགས"><div class="option" id="o1">всевозможные@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རྒྱུན"><div class="option" id="o1">༼samtina༽течение<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">поток*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རིང"><div class="option" id="o1">когда; далеко*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_དུ"><div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">['по направлению/месту', 'отсутствие заявленной цели', 'adj+ly']<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">['Предоставление чего-либо', 'кому-либо', 'для', 'что-бы']<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o4">['взаиморасположение и местопребывание', 'без движения', 'относительно', 'касательно', 'в обстоятельствах', 'место', 'время', 'среди..', 'заголовки']<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བསྒོམས་པ"><div class="option" id="o1">p.культивировать*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སྲིད་པ"><div class="option" id="o1">༼bhava༽становление (10-е звено взаимозависимости);существование*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཐམས་ཅད"><div class="option" id="o1">все@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_མེ"><div class="option" id="o1">огонь༼tejo༽*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འབར་བ"><div class="option" id="o1">гореть;сверкать;вспыхивать@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_མཐོང"><div class="option" id="o1">понимать; видеть*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སྟེ"><div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">after--<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">having--<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o4">adverbal; потому что<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o5">значит<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o6">.. это так<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o7">потому что..<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o8">.. - это ..<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o9">.. - то что..<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཉོན་མོངས་པ"><div class="option" id="o1">пороки༼kleśa༽@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སྡུག་བསྔལ"><div class="option" id="o1">༼duḥkha༽страдание<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">неудовлетворенность*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཉེ"><div class="option" id="o1">рядом*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བར"><div class="option" id="o1">d.l.; туда<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">между<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">через<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o4">середина; inf.p.*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཐར་པ"><div class="option" id="o1">освобождение@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཐོབ"><div class="option" id="o1">получать*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འདོད"><div class="option" id="o1">хотеть<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">желать<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">следовать*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཀྱིས"><div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">деятель<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">инструмент<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o4">c отношением<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o5">По причине<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o6">из-за<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o7">вследствии<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཡིད"><div class="option" id="o1">༼manas༽ум<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">рассудок*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཀུན་ཏུ"><div class="option" id="o1">༼saṃ-༽все<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">полностью;совершенно@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_གདུངས་པ"><div class="option" id="o1">страдающий@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_དེས"><div class="option" id="o1">этим*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རིན་པོ་ཆེ"><div class="option" id="o1">драгоценный@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_གསུམ"><div class="option" id="o1">три*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བསླབས"><div class="option" id="o1">изученный@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ན"><div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">['если']<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">['по направлению/месту', 'отсутствие заявленной цели', 'adj+ly']<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o4">['Предоставление чего-либо', 'кому-либо', 'для', 'что-бы']<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o5">['взаиморасположение и местопребывание', 'без движения', 'относительно', 'касательно', 'в обстоятельствах', 'место', 'время', 'среди..', 'заголовки']<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o6">['be sick; be ill; in pain for the verb', 'na ba']<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_གྲོལ་བ"><div class="option" id="o1">освобождение@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འཐོབ"><div class="option" id="o1">достигнуть@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཅིང"><div class="option" id="o1">когда; и; обр.наречия*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཡང"><div class="option" id="o1">уступ.ч.; как; также; хотя<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">даже*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_མཐོ་རིས"><div class="option" id="o1">༼svarga༽высшие миры(богов и людей)<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">высокое положение)*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_དཔལ"><div class="option" id="o1">прославленный; Шри*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སླར"><div class="option" id="o1">༼api-༽снова<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">в ответ@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ལྡོག་པ"><div class="option" id="o1">возврат<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">обратное*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_མ"><div class="option" id="o1">n.p.; мать*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཡིན"><div class="option" id="o1">есть<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">link.v.*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_མོད"><div class="option" id="o1">но<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">хотя; немедленно; действительно*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འོན"><div class="option" id="o1">но*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཀྱང"><div class="option" id="o1">и .. тоже<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">действительно<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">слишком<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o4">хотя..<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o5">но..<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o6">даже..<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o7">тоже<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o8">также..<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སྐྱོན"><div class="option" id="o1">вред; p.поместить*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཟད་པ"><div class="option" id="o1">p.прекращение<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">истощение@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཡོན་ཏན"><div class="option" id="o1">добродетель<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">достоинство@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཐོབ་པ"><div class="option" id="o1">достижение<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">получение@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཕྱོགས"><div class="option" id="o1">направление; обусловленность*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རེ་བ"><div class="option" id="o1">надежда<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">упование@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རང"><div class="option" id="o1">собственный<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">сам*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_གི"><div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">владение/принадлежность<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">соответствующее основе качество<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o4">место объекта<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o5">часть из/среди целого<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_དོན"><div class="option" id="o1">подлинный; польза; смысл<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">значение༼artha༽; p.оставлять*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རྫོགས"><div class="option" id="o1">совершенный; завершать*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_དེ་ཉིད"><div class="option" id="o1">༼tattva༽таковость*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_གཞན"><div class="option" id="o1">другой; другие*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཉི"><div class="option" id="o1">два*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཚེ"><div class="option" id="o1">жизнь<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">время<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">тогда*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཟད"><div class="option" id="o1">завершать; прекращать*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སངས་རྒྱས"><div class="option" id="o1">Будда@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བསྐུལ"><div class="option" id="o1">взывать<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">призывать@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འཇུག"><div class="option" id="o1">p.вступить;следовать@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_དགོས"><div class="option" id="o1">хотеть<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">нуждаться<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">vb.+~необходимо*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བློ"><div class="option" id="o1">༼buddhi༽разум*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཐོག་མ"><div class="option" id="o1">начало@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཐེག་པ"><div class="option" id="o1">колесница@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ར"><div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">['по направлению/месту', 'отсутствие заявленной цели', 'adj+ly']<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">['Предоставление чего-либо', 'кому-либо', 'для', 'что-бы']<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o4">['взаиморасположение и местопребывание', 'без движения', 'относительно', 'касательно', 'в обстоятельствах', 'место', 'время', 'среди..', 'заголовки']<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o5">goat<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o6">['дополнения строф']<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འཇུག་པ"><div class="option" id="o1">применение;вхождение@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རིགས"><div class="option" id="o1">виды; семейство*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཏེ"><div class="option" id="o1">тогда; когда*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཕར་ཕྱིན"><div class="option" id="o1">Парамиты@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བསྡུས་པ"><div class="option" id="o1">собирание@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འཇིག་རྟེན"><div class="option" id="o1">༼loka༽мирской<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">мир@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སྒྲུབ་ཚུལ"><div class="option" id="o1">способ осуществления@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_མཐུ"><div class="option" id="o1">сила<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">могущество;магия@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_མེད་པ"><div class="option" id="o1">без<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">отсутствие*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_གཉིས་པོ"><div class="option" id="o1">второй;оба@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_གཏན"><div class="option" id="o1">постоянно<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">всегда*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སྤང"><div class="option" id="o1">отбрасывать<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">отказываться*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བྱས"><div class="option" id="o1">p.совершали@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཤིང"><div class="option" id="o1">деепр.нарече; и; но; потому; дерево*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཐུབ"><div class="option" id="o1">мочь<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">суметь;равно@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རྒྱལ"><div class="option" id="o1">Победоносный; царь*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སྙིང"><div class="option" id="o1">сердце*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རྗེས"><div class="option" id="o1">после; imp.изменяться; temp.c.*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_གཞན་ཕན"><div class="option" id="o1">польза других@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རོ"><div class="option" id="o1">༼rasa༽вкус; труп; элексир*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_གཅིག"><div class="option" id="o1">один<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">единственный*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རང་བཞིན"><div class="option" id="o1">само-природа*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_དག"><div class="option" id="o1">pl.p.; все; чистый*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཅེས"><div class="option" id="o1">q.m.*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བདེ"><div class="option" id="o1">благо<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">счастье*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_མི"><div class="option" id="o1">человек; n.p.*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རྨི་ལམ"><div class="option" id="o1">мечта<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">сон@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བགྲངས"><div class="option" id="o1">считать;причислять@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_གཏི་མུག"><div class="option" id="o1">༼moha༽невежество<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">заблуждение*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_གྱིས"><div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">деятель<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">инструмент<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o4">c отношением<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o5">По причине<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o6">из-за<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o7">вследствии<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o8">(semi-colon); (as imperative verb form) do<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_དམའ་བ"><div class="option" id="o1">низкий@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འགྲོ"><div class="option" id="o1">идти*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_གཞན་དོན"><div class="option" id="o1">благо других*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_དགའ་བོ"><div class="option" id="o1">восторг;Nanda<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">ученик Будды;царь Нагов*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཞིང"><div class="option" id="o1">деепр.c.p.;поле;adj+~(и)*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཅི་སྟེ"><div class="option" id="o1">в случае/но если...?<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བརྩོན"><div class="option" id="o1">imp.стремится*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཞེས"><div class="option" id="o1">.. - это..<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_གསུངས་པ"><div class="option" id="o1">h.сказано@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རང་ཉིད"><div class="option" id="o1">я сам@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ལྷུང་བ"><div class="option" id="o1">падать@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འདྲ"><div class="option" id="o1">подобно*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འགྲོ་བ"><div class="option" id="o1">существа<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">скитальцы*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བླང་དོར"><div class="option" id="o1">принятие и отвержение@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འབྱེད"><div class="option" id="o1">различать; открывать*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_པ"><div class="option" id="o1">a.p.*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཤེས་རབ"><div class="option" id="o1">༼prajñā༽высшее знание*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_མིག"><div class="option" id="o1">༼cakṣuḥ༽глаз*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཉམ་ང་བ"><div class="option" id="o1">испуганный@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བྲལ་བ"><div class="option" id="o1">p.f.отделить@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སུ"><div class="option" id="o1">кто<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བགྲོད"><div class="option" id="o1">достичь*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ནུས་པ"><div class="option" id="o1">способность<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">возможность@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འགྲོས"><div class="option" id="o1">походка@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རྒྱལ་བ"><div class="option" id="o1">Победоносный@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བརྩེ་བ"><div class="option" id="o1">h.любящая доброта<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">забота@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བརྩོན་པ"><div class="option" id="o1">старание;стремление@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_གྱུར་པ"><div class="option" id="o1">༼bhuta༽pf.ставший;достигший(качества)*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སྒྲུབ"><div class="option" id="o1">достижение*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རྒྱལ་རིགས"><div class="option" id="o1">царедворцы༼Ksatriya༽@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སྙིང་རྗེ"><div class="option" id="o1">༼karuṇā༽любящая доброта<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">сострадание*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བསྐྱེད"><div class="option" id="o1">p.рождать*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_གང"><div class="option" id="o1">как<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">который; наполнять*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཞིག"><div class="option" id="o1">один<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">неоп.арт.; vb.⊕пусть!; разрушать<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">уничтожать*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཡོད"><div class="option" id="o1">быть*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རྨོངས"><div class="option" id="o1">заблуждение@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བསལ"><div class="option" id="o1">очистить*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བརྩོན་འགྲུས"><div class="option" id="o1">༼viryam༽усердие<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">настойчивость*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རྩོམ"><div class="option" id="o1">составить@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འདི"><div class="option" id="o1">это<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">эта*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བདེ་བ"><div class="option" id="o1">༼sukha༽благо<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">счастье*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བག"><div class="option" id="o1">мука<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">малая часть*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རྩལ"><div class="option" id="o1">энергия<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">способность*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཁུར"><div class="option" id="o1">груз<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">бремя*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འཁྱེར་བ"><div class="option" id="o1">нести<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">переносить*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བྱ"><div class="option" id="o1">птица; f.будет; должно; осуществлять*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཙམ"><div class="option" id="o1">только<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">лишь*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_དམིགས་པ"><div class="option" id="o1">༼ālambana༽рассмотрение<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">созерцание*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_དུད་འགྲོ"><div class="option" id="o1">зверь<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">животное@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཐུན་མོང"><div class="option" id="o1">обычный@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཡིན་པ"><div class="option" id="o1">существование*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཕྱིར"><div class="option" id="o1">для<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">ради<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">благодаря<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o4">поэтому*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ངང་ཚུལ"><div class="option" id="o1">характер<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">нрав@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཕན་བདེ"><div class="option" id="o1">счастье и польза@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_མཐའ"><div class="option" id="o1">край<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">предел<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">конец*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཏུ"><div class="option" id="o1">cc<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">['по направлению/месту', 'отсутствие заявленной цели', 'adj+ly']<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o3">['Предоставление чего-либо', 'кому-либо', 'для', 'что-бы']<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o4">['взаиморасположение и местопребывание', 'без движения', 'относительно', 'касательно', 'в обстоятельствах', 'место', 'время', 'среди..', 'заголовки']<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_གཞོལ་བ"><div class="option" id="o1">старание<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">усилие@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སློབ་མ"><div class="option" id="o1">ученики@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རྙེད"><div class="option" id="o1">найти; выгода<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">нажива*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སླ"><div class="option" id="o1">легкий@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རྩྭ"><div class="option" id="o1">трава@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཁམ"><div class="option" id="o1">кусок@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འགའ"><div class="option" id="o1">нибудь еще<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ལྟ"><div class="option" id="o1">смотреть*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཕྱུགས"><div class="option" id="o1">рогатый скот@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཟ"><div class="option" id="o1">есть<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">кушать*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སྐོམ"><div class="option" id="o1">жажда*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འང"><div class="option" id="o1">уступ.ч.@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཆུ"><div class="option" id="o1">вода*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_དགའ"><div class="option" id="o1">любить*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_མགུར"><div class="option" id="o1">гимн;голосовые связки@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འཐུང"><div class="option" id="o1">пить*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བྱེད་པ"><div class="option" id="o1">совершающий*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འཕགས"><div class="option" id="o1">благородный@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཉི་མ"><div class="option" id="o1">солнце;день@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རླབས་ཆེན"><div class="option" id="o1">великолепный@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རྟ"><div class="option" id="o1">лошадь*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཞོན"><div class="option" id="o1">ехать верхом*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རྒྱུ་བ"><div class="option" id="o1">движение@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_སྣང"><div class="option" id="o1">проявления*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བྱེད"><div class="option" id="o1">совершающее; p.совершали*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རྩེག"><div class="option" id="o1">складывать;думать о;торговаться*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ས"><div class="option" id="o1">земля༼paṭhavī༽; ༼bhūmi༽*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཡིས"><div class="option" id="o1">посредством*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_འདེགས་པ"><div class="option" id="o1">поднимать;взвешивать;идти@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_རང་དོན"><div class="option" id="o1">собственное благо@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_མེད"><div class="option" id="o1">без*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_ཕན"><div class="option" id="o1">польза*<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_གཞོལ"><div class="option" id="o1">поддерживает;прячется@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_བྲེལ་བ"><div class="option" id="o1">участвовать<div class="vote_line" style="width: 57%;"></div></div><div class="option" id="o2">заниматься@<div class="vote_line" style="width: 57%;"></div></div></a>
+<a href="#" id="h_མཁས་པ"><div class="option" id="o1">༼paṇḍita༽ведающий*<div class="vote_line" style="width: 57%;"></div></div></a>
+</section>
 
 			</details>
 
@@ -1670,7 +730,7 @@
 					document.getElementById("key").innerHTML = "";
 					document.getElementById("trnsl_opt").value = "";
 					document.getElementById("user_word").innerHTML = "";
-					
+
 					//calculate click ID
 					var id = event.target.id; // Получили ID, т.к. в e.target содержится элемент по которому кликнули
 					let idx = "h_" + id;
@@ -1729,17 +789,12 @@
 						document.querySelector('#WordModal').style = "";
 					});
 				}
-
 			</script>
-
 	</aside>
 
-	<!--<footer class="Translate">	
-		<h7>Для перевода:</h7>
-		<snt><textarea resize:none rows="2" cols="50" name="text" style="width: 99%; height: 1%; border-left: 1px solid brown; border-radius: 3px;"></textarea></snt>
-	</div>
-</footer>
-	-->
+	<footer class="Down_Sent">
+	</footer>
+
 </body>
 
 </html>

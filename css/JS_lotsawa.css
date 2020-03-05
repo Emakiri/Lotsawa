@@ -6,7 +6,7 @@ p{
 a{text-decoration:none;}
 
 a:hover{color:brown;}
-dfn{
+dfn {
     padding: 0px 1px 10px 1px; /*верх, право, низ, лево*/
     color: navy;
     /*border: 0.5px solid brown;
@@ -14,7 +14,7 @@ dfn{
     font-style: normal;
     line-height: 1.25;}
 
-.definition{/cursor: help; //border-bottom: 1px dashed; //text-decoration: none;
+.definition {/cursor: help; //border-bottom: 1px dashed; //text-decoration: none;
     //display: inline; position: relative;
     }
 
@@ -63,19 +63,18 @@ dfn{
     //border-radius: 5px;}
 
 .cc, a[prtSp="cc"], partcl[prtSp="cc"], span[prtSp="cc"]  {border-radius: 3px; border: 0.5px solid brown; background: #cc88ee; padding: 1px 1px 10px 1px;} 
-<!--cc союз/частица -->		
+/*cc союз/частица*/
 
 //select::-ms-expand {display: none; /* remove default arrow in IE 10 and 11 */ }
 
-section, Fulltext{position: relative;	}
+section, Fulltext{position: fixed;}
 
 .Tib_Txt {
     position: fixed;
     overflow: auto;
-    left:0;top:0;width:75%; height:100%;}
-.Right_Dict {position:fixed;right:0;top:1%;width:25%;height:100%;overflow:auto;}
-/*.Down_Sent{    background: beige;position:fixed;right:0;top:60%;width:100%;height:40%;overflow:auto;}
-*/
+    left:0;top:0;width:75%; height:80%;}
+.Right_Dict {position:fixed;right:0;top:1%;width:25%;height:80%;overflow:auto;}
+.Down_Sent{background: rgba(255, 255, 230, 0.5);position:fixed;right:0;top:80%;width:100%;height:40%;overflow:auto;}
 .transl {position: absolute;  left: 0;  bottom: 0;  width: 100%;  max-height: 40%;  background:gray; overflow:auto;}
 
 h1, h3, h4, h5, h6 {
@@ -223,14 +222,22 @@ border-radius: 4px;
   background-color:beige;cursor:pointer;transition:all .2s ease;padding:12px 16px;
   min-height:50px;box-sizing:border-box}
 
-  .input_sent{    
-      box-sizing:border-box;width: 97%;
-    padding:10px 18px;
-    /*border:2px solid rgba(var(--charcoal-grey-raw),.16);
+  .input_sent{
+      box-sizing: border-box;
+      margin: 10px, 10px, 10px, 18px;
+      padding: 10px, 10px, 10px,18px;
+      /*border:2px solid rgba(var(--charcoal-grey-raw),.16);
     display:block;*/
-    border-radius:4px;
-    font-size:14px;font-weight:600;line-height:1.43;color:var(--charcoal-grey-raw);
-    outline:none;transition:color .2s ease-in,border-color .2s ease-in;resize:vertical}
+      width: 97%;
+      border-radius:4px;
+      font-weight: 600;
+      height: auto;
+      /* line-height: 1; */
+      color:var(--charcoal-grey-raw);
+      outline:none;
+      transition:color .2s ease-in,border-color .2s ease-in;
+      resize:vertical;
+      }
 
 
 select { 
@@ -250,9 +257,67 @@ select {
     //-webkit-appearance: none;
     //-moz-appearance: none;
     //overflow: hidden;
-} 
+}
 
+kbd {
+    rgba(255, 255, 255, 0.8);;
+    margin: 0px 0px 0px 0px; /*верх, право, низ, лево*/
+    padding: 1px 2px 1px 2px; /*верх, право, низ, лево*/
+    border-radius: 3px;
+    font-size: 1em;
+    font-family: "Courier New", monospace;
+    word-break: keep-all;
+    border: 0.75px solid gray;
+    text-shadow: 1 -1px gray;
+    width: fit-content;
+}
 
+/* свойства модального окна по умолчанию /
+.modal {
+width: fit-content;
+height: fit-content;
+position: inherit;
+/* top: 0; */
+/* right: 0; /
+bottom: 10px;
+left: 10px;
+/* background: rgba(0,0,0,0.5); /
+z-index: 1050;
+opacity: 0;
+-webkit-transition: opacity 200ms ease-in;
+-moz-transition: opacity 200ms ease-in;
+transition: opacity 200ms ease-in;
+pointer-events: none;
+margin: 0;
+padding: 0;
+}
+
+}
+/* свойства для блока, содержащего контент модального окна / 
+.modal-content {
+position: relative;
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-orient: vertical;
+-webkit-box-direction: normal;
+-webkit-flex-direction: column;
+-ms-flex-direction: column;
+flex-direction: column;
+background-color: rgba(255, 255, 240, .99);
+-webkit-background-clip: padding-box;
+background-clip: padding-box;
+border: 1px solid rgba(0,0,0,.2);
+border-radius: 4px;
+outline: 0;
+}
+@media (min-width: 300px) {
+.modal-content {
+-webkit-box-shadow: 0 5px 15px rgba(0,0,0,.5);
+box-shadow: 0 5px 15px rgba(0,0,0,.5);
+}
+*/
 /* свойства для заголовка модального окна */
 .modal-header {
 display: -webkit-box;
@@ -278,17 +343,7 @@ font-size: 14px;
 font-weight: 500;
 }
 /* свойства для кнопки "Закрыть"*/
-.picto {
-float: right;
-font-family: sans-serif;
-font-size: 24px;
-font-weight: 700;
-line-height: 1;
-color: #000;
-text-shadow: 0 1px 0 #fff;
-opacity: .5;
-text-decoration: none;
-}
+.picto {float: inherit;font-family: sans-serif;font-size: 24px;font-weight: 700;line-height: 1;color: #000;text-shadow: 0 1px 0 #fff;opacity: .5;text-decoration: none;}
 свойства для кнопки "Закрыть" при нахождении её в фокусе или наведении /
 .picto:focus, .picto:hover {
 color: #000;
@@ -296,7 +351,42 @@ text-decoration: none;
 cursor: pointer;
 opacity: .75;
 }
+/* свойства для блока, содержащего основное содержимое окна /
+.modal-body {
+position: relative;
+-webkit-box-flex: 1;
+-webkit-flex: 1 1 auto;
+-ms-flex: 1 1 auto;
+flex: 1 1 auto;
+padding: 15px;
+overflow: auto;
+}
+*/
 
+/*.transl-lst{background-color:#fff;padding:0;border-radius:4px;overflow:hidden;
+    box-shadow:0 3px 7px rgba(0,0,0,.2);min-width:200px;max-width:400px;
+    display:flex;flex-direction:row;aligns:center;position:relative;
+    color:var(--charcoal-grey);background-color:#fff;cursor:pointer;transition:all .2s ease;
+    min-height:34px;box-sizing:border-box;padding:0 1px 0 1px;
+    display:flex;flex-direction:column}
+    
+    @media screen and (max-width:544px){.transl-lst{min-widtt:unset}}
+*/
+/*    option{
+        font-size:16px;
+        text-align:left;
+        /*outline: auto;/
+        overflow: auto;
+        overflow-x: hidden;
+        white-space: pre-line;
+        word-spacing: normal;
+        word-break: normal; 
+        word-wrap: break-word;
+        hyphens: auto;
+        flex-direction: row;
+        cursor: pointer;
+    }
+    */
 
 .Dict { padding: 0px,0px,0px, 0px;
     /*position: relative;
@@ -364,3 +454,49 @@ opacity: .75;
     left: 0;
     border-radius: 4px;}
 
+/*
+.transl-lst.user-transl{background-color:#28c38a;color:#fff!important}
+.transl-lst.user-transl:hover{background-color:#28c38a!important}@media screen and (max-width:544px){.transl-lst{padding:2px 20px 2px 56px;min-height:30px}
+
+.transl-lst-add-new-word{background-color:#28c38a;color:#fff;font-size:14px;margin:15px 0 0;padding:10px;display:flex;justify-content:center;box-sizing:border-box;cursor:pointer;opacity:.8;transition:opacity .2s ease}
+.transl-lst-add-new-word:hover{opacity:1}
+.transl-lst-add-new-word:active{opacity:.9}
+
+.transl-lst_add-new-translation{width:100%;cursor:pointer;display:inline-flex;flex-direction:row;aligns:center;margin:4px 0;transition:color .2s ease;line-height:1.33;font-size:12px;font-weight:400;font-style:normal;color:var(--bluish-grey);text-decoration:underline}
+.transl-lst_add-new-translation:hover{color:#2582e7}
+.transl-lst_add-new-translation_icon{margin-right:8px}
+.transl-lst_new-translation_input-container{width:100%}
+
+.new-transl_form{width:100%;text-align:center;margin-top:18px;margin-bottom:16px}
+.new-transl_input-container{box-sizing:border-box;font-size:14px;font-weight:400;font-style:normal;font-stretch:normal;line-height:normal;letter-spacing:normal;color:#7e919f}
+
+.button{margin-top:16px;display:flex;flex-direction:row;aligns:center;justify-content:flex-end}
+.transl-lst_new-translation_text-button{margin-right:24px;background:none;text-shadow:none;outline:none;border:none;cursor:pointer;text-decoration:underline;height:20px;font-size:14px;font-weight:600;line-height:1.43;color:var(--azul)}
+
+.footer_expanded-form{position:relative;display:flex;flex-direction:row;aligns:center;justify-content:center;padding:0 18px;width:100%;box-sizing:border-box}
+.transl-lst_footer_icon-sound{position:absolute;right:18px;bottom:0;width:32px;height:32px;cursor:pointer;color:var(--bluish-grey)}
+.transl-lst_footer_icon-sound:hover{color:var(--azul)}
+.transl-lst_footer_icon-sound:hover .ll-leokit-tooltip{display:block}
+.transl-lst_footer_icon-expand{cursor:pointer;color:var(--bluish-grey)}
+.transl-lst_footer_icon-expand:hover{color:var(--azul)}
+.transl-lst_footer_m-collapsed{height:32px;background-color:#e6e9ee;color:var(--bluish-grey);cursor:pointer}
+.transl-lst_footer_m-jungle-view{height:34px}
+.transl-lst_footer_m-jungle-view .transl-lst_footer_icon-expand .ll-icon{padding:10px}
+.transl-lst_footer_m-jungle-view .transl-lst_footer_icon-sound{right:16px;bottom:1px}
+.transl-lst_footer_m-expanded{height:48px}
+.transl-lst_footer_m-expanded .transl-lst_footer_icon-sound{bottom:8px;right:12px}
+.transl-lst_footer_m-empty{height:4px!important}
+.transl-lst_footer_m-expanded-form .transl-lst_footer_icon-sound{bottom:20px}
+.tr-icon{opacity:.6;position:absolute;z-index:10;top:0;bottom:0;margin:auto;right:8px;width:16px;height:16px;background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNmZmZmZmYiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTYgMTljMCAxLjEuOSAyIDIgMmg4YzEuMSAwIDItLjkgMi0yVjdINnYxMnpNMTkgNGgtMy41bC0xLTFoLTVsLTEgMUg1djJoMTRWNHoiLz4KICAgIDwvZz4KPC9zdmc+Cg==);background-size:contain;background-repeat:no-repeat;background-position:50%;cursor:pointer;transition:all .2s ease}
+.tr-icon:hover{opacity:1}
+
+/*.ll-sound{cursor:pointer}
+.ll-sound,.ll-sound_content{display:inline-block;position:relative;line-height:0}
+.ll-sound_content{transition:all .3s ease-in-out;z-index:1}
+.ll-sound_animation{display:inline-block;position:absolute;top:50%;left:50%;transform:transl(-50%,-50%);z-index:0}
+.ll-sound_animation_disc{display:block;position:absolute;top:0;left:0;right:0;bottom:0;background-color:transparent;border-radius:50%;transition:all .3s linear}
+.ll-sound_animation_disc.ll-sound_animation_disc_m-small{background-color:rgba(37,130,231,.7)}
+.ll-sound_animation_disc.ll-sound_animation_disc_m-large{background-color:rgba(37,130,231,.5)}
+.ll-leokit-tooltip{word-break:keep-all;left:50%;transform:transl(-50%)}
+
+*/

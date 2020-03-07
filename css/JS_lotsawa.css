@@ -62,7 +62,10 @@ dfn {
     //border: 0.5px solid brown;
     //border-radius: 5px;}
 
-.cc, a[prtSp="cc"], partcl[prtSp="cc"], span[prtSp="cc"]  {border-radius: 3px; border: 0.5px solid brown; background: #cc88ee; padding: 1px 1px 10px 1px;} 
+.cc, .cag,.cag,.ccp,.cfn,.cfs,.cgn,.clc,.cim,
+.cld,.cnj,.csm, .css {
+    border-radius: 3px; border: 0.5px solid brown; 
+    background: #cc88ee; padding: 1px 1px 10px 1px;} 
 /*cc союз/частица*/
 
 //select::-ms-expand {display: none; /* remove default arrow in IE 10 and 11 */ }
@@ -84,11 +87,16 @@ h1, h3, h4, h5, h6 {
     font-weight: 600;
     line-height: 1.2;
     clear: both;
-    text-shadow: 1px -1px #6e6e6e;
     text-transform: capitalize;		
     text-shadow: 1px -1px #6e6e6e, 
      2px -2px 4px rgba(0,0,0,.5);
 }
+
+.btn{
+border: 1px solid brown;
+    border-radius: 3px;
+    font-size: 14px;
+    }
 
 .sent{
     font-size: 20px;
@@ -141,7 +149,7 @@ h1, h3, h4, h5, h6 {
 }
 
 .fon_okna:target,  .fon_okna.open{
-    display: block;
+    display: content;
     opacity: 1; /* делаем окно видимым */
     pointer-events: auto; /* элемент видим для событий мыши */
     overflow-y: auto; /* добавляем прокрутку по y, когда элемент не помещается на страницу */
@@ -149,7 +157,6 @@ h1, h3, h4, h5, h6 {
 
 .fon_okna {
     /*border: 5px solid yellow;*/
-    display: none; 
     width: 75%;
     height: 98%;
     position: absolute; /* фиксированное положение */
@@ -157,10 +164,10 @@ h1, h3, h4, h5, h6 {
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0,0,0,0.2); /* цвет фона */
+    /* background: rgba(0,0,0,0.2); */ /* цвет фона */
     z-index: 1050;
     opacity: 0; /* по умолчанию модальное окно прозрачно */
-    -webkit-transition: opacity 200ms ease-in; 
+    -webkit-transition: opacity 200ms ease-in;
     -moz-transition: opacity 200ms ease-in;
     transition: opacity 200ms ease-in; /* анимация перехода */
     pointer-events: none; /* элемент невидим для событий мыши */
@@ -335,15 +342,9 @@ justify-content: space-between;
 padding: 2px;
 border-bottom: 1px solid #eceeef;
 }
-.modal-title {
-margin-top: 0;
-margin-bottom: 0;
-line-height: 1.5;
-font-size: 14px;
-font-weight: 500;
-}
+.modal-title {margin-top: 0;margin-bottom: 0;line-height: 1.5;font-size: 18px;font-weight: 500;}
 /* свойства для кнопки "Закрыть"*/
-.picto {float: inherit;font-family: sans-serif;font-size: 24px;font-weight: 700;line-height: 1;color: #000;text-shadow: 0 1px 0 #fff;opacity: .5;text-decoration: none;}
+.picto {font-family: sans-serif;font-size: 24px;font-weight: 700;line-height: 1;color: #000;text-shadow: 0 1px 0 #fff;opacity: .6;position: relative;top: 4px;}
 свойства для кнопки "Закрыть" при нахождении её в фокусе или наведении /
 .picto:focus, .picto:hover {
 color: #000;
@@ -404,9 +405,19 @@ overflow: auto;
 }
 
 .transl-lst{
-    /*display:flex;*/flex-direction:row;align-items:center;position:relative;
-    color:var(--charcoal-grey);background-color:beige;cursor:pointer;
-    transition:all .2s ease;min-height:34px;box-sizing:border-box;padding:0 0px 0 0px}
+    /* display:flex; */
+    /* flex-direction:row; */
+    /* align-items:center; */
+    position: inherit;
+    /* color:var(--charcoal-grey); */
+    /* background-color:beige; */
+    cursor:pointer;
+    /* transition:all .2s ease; */
+    /* min-height: 33px; */
+    /* box-sizing:border-box; */
+    /* padding: 0px 0px 0px 0px; */
+    margin: -0px,-0px,0px,0px;
+    }
 /*.item_votes{position:absolute;top:0;left:0;bottom:0;display:flex;justify-content:center;align-items:center;width:56px;height:100%}
 */
 

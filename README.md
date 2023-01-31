@@ -1,6 +1,6 @@
 # Tibetan-Russian(English) linguist-translator workstation
 ---
-#tibetan #translation #lotsawa #python #javascript
+#tibetan, #translation, #lotsawa, #python, #javascript
 
 Project Lotsawa - automatic translation of Tibetan text
 You can see an example here http://Lotsawa.pythonanywhere.com/

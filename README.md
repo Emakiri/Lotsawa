@@ -1,24 +1,35 @@
-# Lotsawa
-Auto Formatter, Auto Translater Tibetan Text (http://emakiri.pythonanywhere.com/)
-<br/>
-#### Модуль 1 Текст (JavaScript)
-(можно протестировать по ссылке выше)<br/>
-1.1 Форматирует тибетский текст (выделяет заголовки, подзаголовки, цитаты, разбивает на абзацы, внутренне размечает предложения для дальнейшего перевода)<br/>
-<br/>
-#### Модуль 2 Словарь (Python). 
-2.1 Разбивает на слова<br/>
-2.2 Ищет слово в словаре (db GVector)собирает найденные слова и все из значения в мини-Словарь.<br/>
-2.3 Формирует файл вывода( можно посмотреть здесь - http://emakiri.pythonanywhere.com/)<br/>
-<br/>
-#### Модуль 3 Слово (JavaScript). 
-3.1 Кликая по слову в тиб. тексте показывает карточку переводов слова.<br/>
-3.1.1 Переводы имеют оценку в % по частоте встречаемости (в работе).<br/>
-3.1.2 В карточке можно выбрать, уместный в данном контексте, перевод или добавить свой перевод (добавленный перевод с тиб.ключем попадает в список Новая Пара и в `Application-IndexedDb-NewPair`)<br/>
-3.1.3 Справа в окне можно добавить новую пару в формате `тибетское словосочетание=русский перевод` (добавленная пара попадает в список Новая Пара и в `Application-IndexedDb-NewPair`)<br/>  
-<br/>
-#### Модуль 4 Предложение (JavaScript) 
-4.1 После выбора (в карточке слова) всех (хотя-бы одного) значений слов предложения, появляется технический перевод предложения, которое можно редактировать.<br/>
-4.1.1 часть речи каждого слова (в работе) <br/>
-4.1.2 наиболее часто встречающийся перевод или собственный выбор из пункта 3.1.2 можно менять местами формируя технический перевод предложения. <br/>
-4.1.3 Окно для литературного перевода предложения (можно выполнять, редактируя технический перевод).<br/>
-4.1.4. Приемлемый вариант перевода предложения, вместе с тибетским оригиналом, по-кнопке сохраняется в `Application-IndexedDb-Sentence` и присоединяет к Переводу Текста (в правом боковом окне).<br/>
+Project Lotsawa - automatic translation of Tibetan text
+You can see an example here http://Lotsawa.pythonanywhere.com/
+Who is interested to collaborate, support the project, welcome.
+
+## Module 1 Text (Python)
+1.1 Formats Tibetan text (labels: headings, subheadings, quotations, non-tibetan text; divides into paragraphs, internally labels sentences for further translation)
+
+## Module 2 Dictionary (Python)
+2.1 Splits into words
+2.2 Searches word in dictionary (PickleDB) collects found words and all their meanings into a mini dictionary.
+2.3 Generates an output file (can be viewed here - http://Lotsawa.pythonanywhere.com/)
+
+## Module 3 Word (JavaScript+Python)
+3.1 Clicking on a word in the tibetan text shows the word's translation card.
+3.1.1 Translations are rated in % by frequency of occurrence (in development).
+3.1.2 In the card you can select translation relevant in this context or add your translation (by pressing ☸) (added translation with Tibetan key goes to the list of 'New Pair' and PickleDB and 00_NW.txt).
+3.1.3 On the right side of the 'Word' tab type Tibetan word combination => Russian translation (press ☸) a new pair is added | replaced (checkbox= replace) (the added pair goes to the list of 'New Pair' and PickleDB and 00_NW.txt)
+3.1.4 On the right side of the Word tab you type the Tibetan phrase (by pressing ☸) to request the dictionary entry from the PickleDB dictionary
+
+## Module 4 Sentence / Text (JavaScript+Python)
+4.1 After selecting (in the card of word) all (at least one) meanings of the words in the sentence, a technical auto-translation of the sentence is displayed which can be edited.
+4.1.1 part of speech of each word (in development)
+4.1.2 the most frequent translations or your choice from section 3.1.2 can be swapped to form a technical translation of the sentence. 
+4.1.3 Box for literary translation of a sentence (can be done by editing the technical translation)
+4.1.4 The acceptable sentence translation, together with the Tibetan original, (by pressing ☸) is saved in PickleDB and 03_ST.txt and appended to the Translated Text (in the right side window).
+4.1.5 On the right side of the Text tab type a passage of Tibetan text (press ☸) to obtain a parse of this passage of Tibetan text
+
+## Module 5 File(JavaScript+Python)
+5.1 On the right side of the File tab you can specify a user file and (by pressing ☸) obtain the parsing of the Tibetan text and ready to translate 
+
+## Module 6 Control Buttons (JavaScript+Python)
+5.1 ⚙ - Settings: User selection, languages of interface etc.
+5.2 ㏈ - Exporting modified PickleDB to BackUpDB
+5.3 ⏮⏭ - Page navigation
+5.4 📜 - List of texts
